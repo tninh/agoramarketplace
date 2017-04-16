@@ -1,1 +1,2 @@
-#this is CMPE 272 Term Project \n Each team members please gives an idea
+# This is CMPE 272 Term Project 
+Each team members please gives an idea
