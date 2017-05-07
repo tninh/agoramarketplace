@@ -1,8 +1,17 @@
 <?php
 $g_login_session_key = "LOGIN_SESSION_KEY";
 
+//using mysqli 
+function getConnection()
+{
+        //Connecting to mysql database
+        $conn = mysqli_connect('localhost', 'user', 'password', 'dbname') 
+            or die('Error connecting to MySQL server.');
+        return $conn;         
+}
 
-//using pdo
+
+///using pdo
 function getConnectionPDO()
 {
    try {
@@ -15,6 +24,44 @@ function getConnectionPDO()
         echo "Connection failed: " . $e->getMessage();
    }         
    return $conn;         
+}
+
+
+function CheckLoginSESSION()
+{
+    global $g_login_session_key;
+
+    session_start();
+    $sessionvar = $g_login_session_key;
+
+    if (empty($_SESSION[$g_login_session_key]))
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+function CheckLoginInDB($useremail, $userpass)
+{
+    $conn = getConnectionPDO();
+    if ((strlen($useremail) > 0) && (strlen($userpass) > 0))
+    {
+        $sql = " select * from User " .
+               " where userEmail = :user_email and userPass = :user_pass";                            
+        $ps = $conn->prepare($sql);
+        $ps->bindParam(':user_email', $useremail);
+        $ps->bindParam(':user_pass', $userpass);
+        $ps->execute();   
+        $result = $ps->fetchAll(PDO::FETCH_ASSOC);
+       
+        if (count($result) > 0) {
+            return true;
+        }
+    }
+    return false;
 }
 
 
@@ -51,6 +98,56 @@ function constructTable($data, $showHeader, $keyName, $editLink, $deleteLink)
     print "</table>\n";
 }
 
+function drawStars($avg_rating){
+    for ($i = 0; $i < $avg_rating; $i++) {
+    print "<span class='glyphicon glyphicon-star'></span>"; 
+   
+    }
+    for ($i = $avg_rating; $i < 5; $i++) {
+        print "<span class='glyphicon glyphicon-star-empty'></span>"; 
+    }
+}
+
+function ratingStars(){
+    //for ($i = 0; $i < $avg_rating; $i++) {
+    //print "<span class='glyphicon glyphicon-star'></span>"; 
+   
+    //}
+    for ($i = 0; $i < 5; $i++) {
+        print "<span class='glyphicon glyphicon-star-empty'></span><"; 
+    }
+}
+
+function getAvgRatingById($id){
+    $conn = getConnectionPDO();
+    $query = " SELECT avg(rating) as avg_rating, count(rating) as count_rating from Rating where productId = :id ";
+    $params = array(':id' => $id);
+    $ps = $conn->prepare($query);
+    $ps->execute($params);
+    $data = $ps->fetchAll(PDO::FETCH_ASSOC);
+    $avg_rating = 0;
+    foreach ($data as $row) {
+        $avg_rating = $row["avg_rating"];
+    }
+    return $avg_rating;
+    
+}
+
+function getCountRatingById($id){
+    $conn = getConnectionPDO();
+    $query = " SELECT avg(rating) as avg_rating, count(rating) as count_rating from Rating where productId = :id ";
+    $params = array(':id' => $id);
+    $ps = $conn->prepare($query);
+    $ps->execute($params);
+    $data = $ps->fetchAll(PDO::FETCH_ASSOC);
+    $count_rating = 0;
+    foreach ($data as $row) {
+        $count_rating = $row["count_rating"];
+    }
+    return $count_rating;
+    
+}
+
 
 function Redirect($url)
 {
@@ -61,6 +158,112 @@ function Redirect($url)
     exit();
 }
 
+
+function checkRating($userEmail, $productId, $rating, $comments){
+
+    try
+    {
+        $conn = getConnectionPDO();
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = " select * from Rating " .
+               " where userEmail = :user_email and productId = :product_id ";
+        $params = array(':user_email' => $userEmail, 
+                         ':product_id' => $productId);
+
+        $ps = $conn->prepare($sql);
+        $ps->execute($params);
+        $result = $ps->fetchAll(PDO::FETCH_ASSOC);
+   
+        if (count($result) > 0) {
+            return true;
+        }
+
+        return false;
+        
+    }
+    catch (PDOException $ex)
+    {
+        echo 'ERROR: ' . $ex->getMessage();
+    }
+    catch (Exception $ex)
+    {
+        echo 'ERROR: ' . $ex->getMessage();
+    }
+    
+}
+
+function insertRating($userEmail, $productId, $rating, $comments){
+
+    try
+    {
+        $conn = getConnectionPDO();
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = " insert into Rating (userEmail, productId, rating, comments) " .
+               " values (:user_email, :product_id, :rating, :comments) ";
+        $params = array(':user_email' => $userEmail, 
+                         ':product_id' => $productId, 
+                         ':rating' => $rating, 
+                         ':comments' => $comments);
+         $ps = $conn->prepare($sql);
+         return $ps->execute($params);
+        
+    }
+    catch (PDOException $ex)
+    {
+        echo 'ERROR: ' . $ex->getMessage();
+    }
+    catch (Exception $ex)
+    {
+        echo 'ERROR: ' . $ex->getMessage();
+    }
+    
+}
+
+function updateRating($userEmail, $productId, $rating, $comments){
+
+    try
+    {
+        $conn = getConnectionPDO();
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = " update Rating set rating = :rating, comments = :comments where userEmail = :user_email and productId = :product_id ";
+        $params = array(':user_email' => $userEmail, 
+                         ':product_id' => $productId, 
+                         ':rating' => $rating, 
+                         ':comments' => $comments);
+         $ps = $conn->prepare($sql);
+         return $ps->execute($params);
+        
+    }
+    catch (PDOException $ex)
+    {
+        echo 'ERROR: ' . $ex->getMessage();
+    }
+    catch (Exception $ex)
+    {
+        echo 'ERROR: ' . $ex->getMessage();
+    }
+    
+}
+
+function getMarketProduct($link) {
+        // Initialize cURL session
+      $ch = curl_init();
+      
+      // Set the URL of the page file to download.
+      curl_setopt($ch, CURLOPT_URL, $link);
+
+      // Ask cURL to write the contents to a file
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      
+      //Execute the c session
+      $content = curl_exec($ch);
+      
+      // Close cURL session 
+      curl_close($ch);
+      // Close file
+
+      return $array = json_decode(trim($content), TRUE);
+}
 
 function createNewUser($useremail, $userfirst, $userlast, $usergender, 
     $cellphone, $homephone, $address, $city, $state, $zip, 

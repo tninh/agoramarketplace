@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require_once('config.php'); ?>
 
 <!DOCTYPE html>
@@ -5,22 +6,18 @@
 
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-     <script type = "text/javascript">
-            function validate()
-            {        
-                // var rating = document.getElementById("rating");      
-                // var comments = document.getElementById("comments");   
-                
-
-                // session_start();
-                // $_SESSION[$g_login_session_key] = "pdong@email.com";
-
-                // echo(rating);
-
-                // echo($g_login_session_key);
-
-                //document.forms["reviewform"].submit();
-            }
+    <script type = "text/javascript">
+        function validate()
+        {        
+          document.getElementById('rating').value = document.getElementById('count').innerHTML;
+          document.forms["reviewform"].submit();
+        }
+        $('body').keypress(function(e){
+          if (e.keyCode == 13 || e.keyCode == 36)
+          {
+              $('#reviewform').submit();
+          }
+        });
     </script>
 
     
@@ -74,13 +71,14 @@
                             $ps->execute($params);
                             $data = $ps->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($data as $row) {
-                                $avg_rating = round($row["avg_rating"]);
+                                $rating = $row["avg_rating"];
+                                $round_rating = round($row["avg_rating"]);
                                 print " <div class='ratings'> \n";
                                 print " <p class='pull-right'>" . $row["count_rating"] ." reviews</p>";
                                 print "<p>";
-                                drawStars($avg_rating);
+                                drawStars($round_rating);
                                 
-                                print " " . $avg_rating. " stars";
+                                print "&nbsp&nbsp" . number_format($rating, 1, '.', ''). " stars";
                                 print "</p>";
                                 print " </div> \n";
                             }
@@ -118,30 +116,29 @@
 
                    ?>
                     <section> 
-                      <form class='form-inline' role='form' id='reviewform' method='GET' action='review_p.php'>                               
+                      <form class='form-inline' name="reviewform" id='reviewform' method='GET' action="review_p.php">                               
                            <div class='form-group'> 
                               <input type="hidden" name="userEmail" id='userEmail' 
-                                      value="<?php print $g_login_session_key; ?>">    
+                                      value="<?php print $_SESSION[$g_login_session_key]; ?>">        
                               <input type="hidden" name="productId" id='productId' 
-                                      value="<?php print filter_input(INPUT_GET, "id"); ?>">                            
+                                      value="<?php print filter_input(INPUT_GET, "id"); ?>">      
+                               <input type="hidden" name="rating" id='rating' >                       
                               <textarea id='comments' name='comments' class='form-control' rows='3' placeholder='Your comments' style="margin: 0px; width: 490px;"/> </textarea>
-                              <input type='text' name='rating' id='rating' "/>
                               <div class="container">
                                 <div class="row lead">
                                       <div id="stars" class="starrr"></div>
-                                     
+                                     <span name="count" id="count" hidden></span>
                                 </div>
                               </div>
                              
                            </div>                                    
                           <div class='text-right'> 
-                           <button class='btn btn-success' type="submit" >Leave a Review</button> 
+                          <!--  <button class='btn btn-success' type="submit" >Leave a Review</button>  -->
+                            <button class='btn btn-success' type="button" onclick="validate()">Leave a Review</button> 
                           </div> 
                       </form>  
-                  </section> 
+                   </section> 
                     
-                   
-                
                 </div>
             </div>
         </div>
