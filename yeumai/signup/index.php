@@ -22,7 +22,7 @@
 
       <form class="form-signin">
         <div class="text-center">
-          <img src="../assets/img/logo/agora.png">
+          <img src="../assets/img/logo/agora.png" width="130" height="130">
         </div>
         <h2 class="form-signin-heading">Create An Account</h2>
 
@@ -39,7 +39,7 @@
         <input type="tel" id="inputCellPhone" class="form-control" placeholder="Cell Phone" required>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Create Your Agora Account</button>
+        <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Create Your <span><img src="../assets/img/logo/agora.png" width="30" height="30"></span> Account</button>
       </form>
 
     </div> <!-- /container -->

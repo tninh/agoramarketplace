@@ -22,7 +22,7 @@
 
       <form class="form-signin">
         <div class="text-center">
-          <img src="../assets/img/logo/agora.png">
+          <img src="../assets/img/logo/agora.png" width="130" height="130">
         </div>
         <h2 class="form-signin-heading">Please sign in</h2>
 
