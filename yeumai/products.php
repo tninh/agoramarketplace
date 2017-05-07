@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="assets/img/logo/agora.png">
 
     <title>Products</title>
 
@@ -35,13 +36,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <!--<img class="pull-left" src="assets/img/logo/agora.png">-->
                 <a class="navbar-brand" href="#">Agora Marketplace</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.php">Home</a>
+                        <a href="main.php">Home</a>
                     </li>
                     <li>
                         <a href="about.php">About</a>
@@ -71,10 +73,16 @@
         <div class="row">
 
             <div class="col-md-3">
-                <p class="lead">Agora Marketplace</p>
+                <p class="lead">Cookies</p>
                 <div class="list-group">
                     <a href="lfive.php" class="list-group-item">Last five visited items</a>
                     <a href="mfive.php" class="list-group-item">Five most visited items</a>
+                </div>
+                <p class="lead">Partners</p>
+                <div class="list-group">
+                    <a href="http://hroboter.com/" class="list-group-item">HRoboter</a>
+                    <a href="http://taipham.info/index.php" class="list-group-item">SoccerGearX</a>
+                    <a href="http://match-all.com/matchall/" class="list-group-item">Auto Car</a>
                 </div>
             </div>
 
@@ -91,13 +99,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="./image/feature_1.jpg" alt="http://placehold.it/800x300">
+                                    <img class="slide-image" src="http://match-all.com/matchall/photo/car1.jpg" alt="http://placehold.it/800x300">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="./image/feature_2.jpg" alt="http://placehold.it/800x300">
+                                    <img class="slide-image" src="http://taipham.info/image/adidas-toque-13-jersey.jpg" alt="http://placehold.it/800x300">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="./image/feature_3.jpg" alt="http://placehold.it/800x300">
+                                    <img class="slide-image" src="http://match-all.com/matchall/photo/car2.jpg" alt="http://placehold.it/800x300">
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -112,6 +120,30 @@
                 </div>
 
                 <div class="row">
+                    <!-- TODO: Better to create a php function to do all of the below -->
+                    <!-- TODO 2: Formatting -->
+                    <?php
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, 'http://hroboter.com/sendproductsinfo.php');
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                        $content = curl_exec($ch);
+                        curl_close($ch);
+                        $array = json_decode(trim($content), TRUE);
+                        //var_dump($array);
+                        foreach ($array as $row) {
+                            echo '<div class="col-sm-4 col-lg-4 col-md-4">';
+                            echo '<div class="thumbnail">';
+                            echo '<img class="img-rounded mh-100"src="http://hroboter.com/photos/'.$row['image'].'" alt="">';
+                            echo '<div class="caption">';
+                            echo '<h4><a href="http://hroboter.com/single_product_page.php?id='.$row['id'].'">'.$row['name'].'</a></h4>';
+                            echo '<p><h4>$'.$row['price'].'</h4></p>';
+                            echo '<p>'.$row['description'].'</p>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    ?>
+
                     <?php
                         $ch = curl_init();
                         curl_setopt($ch, CURLOPT_URL, 'http://taipham.info/marketplace/get_products.php');
@@ -126,7 +158,7 @@
                             echo '<img src="http://taipham.info/image/'.$row['image_uri'].'" alt="">';
                             echo '<div class="caption">';
                             echo '<h4><a href="http://taipham.info/single_product_page.php?id='.$row['prod_id'].'">'.$row['prod_name'].'</a></h4>';
-                            echo '<p><h4>'.$row['prod_price'].'</h4></p>';
+                            echo '<p><h4>$'.$row['prod_price'].'</h4></p>';
                             echo '<p>'.$row['desc'].'</p>';
                             echo '</div>';
                             echo '</div>';
@@ -159,7 +191,7 @@
                             echo '<img src="http://match-all.com/matchall/photo/'.$row['image'].'" alt="">';
                             echo '<div class="caption">';
                             echo '<h4><a href="http://match-all.com/matchall/detail.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
-                            echo '<p><h4>'.$row['price'].'</h4></p>';
+                            echo '<p><h4>$'.$row['price'].'</h4></p>';
                             echo '<p>'.$row['description'].'</p>';
                             echo '</div>';
                             echo '</div>';
