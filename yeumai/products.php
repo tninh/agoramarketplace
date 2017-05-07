@@ -171,7 +171,7 @@
                         $ch = curl_init();
                     
                         // Set the URL of the page file to download.
-                        curl_setopt($ch, CURLOPT_URL, 'http://match-all.com/matchall/auto_out.php');
+                        curl_setopt($ch, CURLOPT_URL, 'http://matchall.com/auto_out.php');
 
                         // Ask cURL to write the contents to a file
                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -188,7 +188,7 @@
                         foreach ($array as $row) {
                             echo '<div class="col-sm-4 col-lg-4 col-md-4">';
                             echo '<div class="thumbnail">';
-                            echo '<img src="http://match-all.com/matchall/photo/'.$row['image'].'" alt="">';
+                            echo '<img src="http://matchall.com/photo/'.$row['image'].'" alt="">';
                             echo '<div class="caption">';
                             echo '<h4><a href="http://match-all.com/matchall/detail.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
                             echo '<p><h4>$'.$row['price'].'</h4></p>';
