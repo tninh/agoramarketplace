@@ -33,7 +33,7 @@
                              print " <div class='thumbnail'> \n";
                                 print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
                                 print " <div class='caption'> \n";
-                                   print " <h5><a href='detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
+                                   print " <h5><a href='http://hroboter.com/detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
                                     print " <h5>$ " . $row["price"] . "</h5> \n";
                                    print " <h5>" . $row["location"] . "</h5> \n";
                                    print " <div class='ratings'> \n";
