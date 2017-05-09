@@ -117,20 +117,20 @@
                    ?>
                     <section>
                       <form name="reviewform" id='reviewform' method='GET' action="review_p.php">
-                           <div class='form-group'>
+
                               <input type="hidden" name="userEmail" id='userEmail'
                                       value="<?php print $_SESSION[$g_login_session_key]; ?>">
-                            </div>
-                            <div class="form-group">
+
+
                               <input type="hidden" name="productId" id='productId'
                                       value="<?php print filter_input(INPUT_GET, "id"); ?>">
-                            </div>
-                            <div class="form-group">
+
+
                                <input type="hidden" name="rating" id='rating' >
-                             </div>
-                             <div class="form-group">
+
+                             <!-- <div class="form-group"> -->
                                 <textarea id='comments' name='comments' class='form-control' rows='3' placeholder='Your comments'> </textarea>
-                              </div>
+                              <!-- </div> -->
                               <div class="container">
                                 <div class="row lead">
                                       <div id="stars" class="starrr"></div>
