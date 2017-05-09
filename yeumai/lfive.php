@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if (count($_SESSION) != 0){
+        var_dump($_SESSION);
+    }
+    else var_dump($_SESSION);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,11 +137,13 @@
                 $arr=array_reverse($_COOKIE);
                 $keyArr= [];
                 $i=0;
-                foreach($arr as $value){
-                    array_push($keyArr, $value);
-                    $i++;
-
-                    if($i==5) break;
+                foreach($arr as $key => $value){
+                    if ($key == "PHPSESSID"){}
+                    else {
+                        array_push($keyArr, $value);
+                        $i++;
+                        if ($i == 5) break;
+                    }
                 }
                 foreach ($keyArr as $value){
                     $temp = explode("_", $value);

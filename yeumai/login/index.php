@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,31 +14,32 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="../login/signin.css" rel="stylesheet">
+    <link href="signin.css" rel="stylesheet">
   </head>
 
   <body style="background-color:white;">
 
     <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" method="POST" action="authenticate.php">
         <div class="text-center">
           <img src="../assets/img/logo/agora.png" width="130" height="130">
         </div>
         <h2 class="form-signin-heading">Please sign in</h2>
 
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
+        <input type="email" name="USERNAME" class="form-control" placeholder="Email address">
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name="PASSWORD" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
         <input class="btn btn-lg btn-primary btn-block" type="submit">
-        <a class="btn btn-lg btn-primary btn-block" href="../signup/">or Create An Account</a>
+        <a class="btn btn-lg btn-primary btn-block" href="../signup">or Create An Account</a>
       </form>
+
 
     </div> <!-- /container -->
 
