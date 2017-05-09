@@ -16,7 +16,7 @@
         <div class="row">
             <?php include 'side_bar.inc.php';?>
             <div class="col-md-10">
-                 <h3>TOP FIVE PRODUCTS ON MARKET</h3>
+                <h3>TOP FIVE AGORA</h3>
 
                 <div class="row">
 
