@@ -39,8 +39,9 @@
                                    print " <div class='ratings'> \n";
                                    print " <p class='pull-right'>" . getCountRatingById($row["id"]) ." reviews</p>";
                                    print "<p>";
-                                     drawStars(getAvgRatingById($row["id"]));
-                                     print " " . getAvgRatingById($row["id"]) . " stars";
+                                     $rating = getAvgRatingById($row["id"]);
+                                      drawStars(round($rating));
+                                      print "&nbsp&nbsp" . number_format($rating, '1', '.', '') . " stars";
                                    print "</p>";    
                                    print " </div> \n";                          
                                 print " </div> \n";
