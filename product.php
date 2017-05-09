@@ -33,7 +33,7 @@
                             foreach ($data as $row) {
                                  print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
                                    print " <div class='thumbnail'> \n";
-                                      print " <img src='photo\\" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
+                                      print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
                                       print " <div class='caption'> \n";
                                          print " <h5><a href='detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
                                           print " <h5>$ " . $row["price"] . "</h5> \n";
@@ -72,20 +72,22 @@
 
                    <?php 
                                              
-                      $data = getMarketProduct('http://hroboter.com/sendproductsinfo.php');
+                      $data = array_merge(getMarketProduct('http://hroboter.com/sendproductsinfo.php'));
                       foreach ($data as $row) {
                            print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
                              print " <div class='thumbnail'> \n";
-                                print " <img src='http://hroboter.com/photos/" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
+                                print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
                                 print " <div class='caption'> \n";
-                                   print " <h5><a href='detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
+                                   print " <h5><a href='http://hroboter.com/detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
                                     print " <h5>$ " . $row["price"] . "</h5> \n";
                                    print " <h5>" . $row["location"] . "</h5> \n";
                                    print " <div class='ratings'> \n";
                                    print " <p class='pull-right'>" . getCountRatingById($row["id"]) ." reviews</p>";
                                    print "<p>";
-                                     drawStars(getAvgRatingById($row["id"]));
-                                     print " " . getAvgRatingById($row["id"]) . " stars";
+                                      $rating = number_format(getAvgRatingById($row["id"]), 1, '.', '');
+                                      $round_rating = round(getAvgRatingById($row["id"]));
+                                      drawStars($round_rating);
+                                     print " " . $rating . " stars";
                                    print "</p>";    
                                    print " </div> \n";                          
                                 print " </div> \n";
@@ -94,17 +96,9 @@
 
                       }    
                    ?>
-              </div>
-     
-
+                </div>
             </div>
-
         </div>
-
-
-
-                
-
     </div>
     <!-- /.container -->
 

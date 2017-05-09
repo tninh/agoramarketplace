@@ -54,7 +54,7 @@
 
                             
                             foreach ($data as $row) {
-                                        print " <img class='mg-responsive' src='photo\\" . $row["image"] . "' alt=''> \n";
+                                        print " <img class='mg-responsive' src='" . $row["image"] . "' alt=''> \n";
                                         print " <div class='caption-full'> \n";
                                             print " <h3>" . $row["title"] . "</h3> \n";
                                             print " <h4 class='pull-right'>" . $row["price"] . "</h4> \n";

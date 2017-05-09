@@ -327,15 +327,7 @@ function createNewUser($useremail, $userfirst, $userlast, $usergender,
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 ?>
+
+
+
