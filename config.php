@@ -1,13 +1,13 @@
 <?php
 $g_login_session_key = "LOGIN_SESSION_KEY";
 
-//using mysqli 
+//using mysqli
 function getConnection()
 {
         //Connecting to mysql database
-        $conn = mysqli_connect('localhost', 'user', 'password', 'dbname') 
+        $conn = mysqli_connect('localhost', 'user', 'password', 'dbname')
             or die('Error connecting to MySQL server.');
-        return $conn;         
+        return $conn;
 }
 
 
@@ -17,13 +17,13 @@ function getConnectionPDO()
    try {
     $conn = new PDO("mysql:host=localhost;dbname=dbname", "user", "password");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   
-   }     
+
+   }
    catch(PDOException $e)
    {
         echo "Connection failed: " . $e->getMessage();
-   }         
-   return $conn;         
+   }
+   return $conn;
 }
 
 
@@ -50,13 +50,13 @@ function CheckLoginInDB($useremail, $userpass)
     if ((strlen($useremail) > 0) && (strlen($userpass) > 0))
     {
         $sql = " select * from User " .
-               " where userEmail = :user_email and userPass = :user_pass";                            
+               " where userEmail = :user_email and userPass = :user_pass";
         $ps = $conn->prepare($sql);
         $ps->bindParam(':user_email', $useremail);
         $ps->bindParam(':user_pass', $userpass);
-        $ps->execute();   
+        $ps->execute();
         $result = $ps->fetchAll(PDO::FETCH_ASSOC);
-       
+
         if (count($result) > 0) {
             return true;
         }
@@ -75,11 +75,11 @@ function constructTable($data, $showHeader, $keyName, $editLink, $deleteLink)
         {
             print "   <tr>\n";
             if(!empty($editLink))
-                print "      <th>&nbsp;</th>\n";              
+                print "      <th>&nbsp;</th>\n";
             foreach ($row as $name => $value)
                 print "      <th>$name</th>\n";
             if(!empty($deleteLink))
-                print "      <th>&nbsp;</th>\n";        
+                print "      <th>&nbsp;</th>\n";
             print "   </tr>\n";
             $doHeader = false;
         }
@@ -88,8 +88,8 @@ function constructTable($data, $showHeader, $keyName, $editLink, $deleteLink)
         if(!empty($keyName))
             $keyValue = $row[$keyName];
         if(!empty($editLink))
-            print "      <td><a href='". $editLink ."?id=". $keyValue ."'>Edit</a</th>\n";                        
-        foreach ($row as $name => $value)            
+            print "      <td><a href='". $editLink ."?id=". $keyValue ."'>Edit</a</th>\n";
+        foreach ($row as $name => $value)
             print "      <td>$value</td>\n";
         if(!empty($deleteLink))
             print "      <td><a href='". $deleteLink ."?id=". $keyValue ."'>Delete</a</th>\n";
@@ -100,21 +100,21 @@ function constructTable($data, $showHeader, $keyName, $editLink, $deleteLink)
 
 function drawStars($avg_rating){
     for ($i = 0; $i < $avg_rating; $i++) {
-    print "<span class='glyphicon glyphicon-star'></span>"; 
-   
+    print "<span class='glyphicon glyphicon-star'></span>";
+
     }
     for ($i = $avg_rating; $i < 5; $i++) {
-        print "<span class='glyphicon glyphicon-star-empty'></span>"; 
+        print "<span class='glyphicon glyphicon-star-empty'></span>";
     }
 }
 
 function ratingStars(){
     //for ($i = 0; $i < $avg_rating; $i++) {
-    //print "<span class='glyphicon glyphicon-star'></span>"; 
-   
+    //print "<span class='glyphicon glyphicon-star'></span>";
+
     //}
     for ($i = 0; $i < 5; $i++) {
-        print "<span class='glyphicon glyphicon-star-empty'></span><"; 
+        print "<span class='glyphicon glyphicon-star-empty'></span><";
     }
 }
 
@@ -130,7 +130,7 @@ function getAvgRatingById($id){
         $avg_rating = $row["avg_rating"];
     }
     return $avg_rating;
-    
+
 }
 
 function getCountRatingById($id){
@@ -145,7 +145,7 @@ function getCountRatingById($id){
         $count_rating = $row["count_rating"];
     }
     return $count_rating;
-    
+
 }
 
 
@@ -167,19 +167,19 @@ function checkRating($userEmail, $productId, $rating, $comments){
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = " select * from Rating " .
                " where userEmail = :user_email and productId = :product_id ";
-        $params = array(':user_email' => $userEmail, 
+        $params = array(':user_email' => $userEmail,
                          ':product_id' => $productId);
 
         $ps = $conn->prepare($sql);
         $ps->execute($params);
         $result = $ps->fetchAll(PDO::FETCH_ASSOC);
-   
+
         if (count($result) > 0) {
             return true;
         }
 
         return false;
-        
+
     }
     catch (PDOException $ex)
     {
@@ -189,7 +189,7 @@ function checkRating($userEmail, $productId, $rating, $comments){
     {
         echo 'ERROR: ' . $ex->getMessage();
     }
-    
+
 }
 
 function insertRating($userEmail, $productId, $rating, $comments){
@@ -200,13 +200,13 @@ function insertRating($userEmail, $productId, $rating, $comments){
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = " insert into Rating (userEmail, productId, rating, comments) " .
                " values (:user_email, :product_id, :rating, :comments) ";
-        $params = array(':user_email' => $userEmail, 
-                         ':product_id' => $productId, 
-                         ':rating' => $rating, 
+        $params = array(':user_email' => $userEmail,
+                         ':product_id' => $productId,
+                         ':rating' => $rating,
                          ':comments' => $comments);
          $ps = $conn->prepare($sql);
          return $ps->execute($params);
-        
+
     }
     catch (PDOException $ex)
     {
@@ -216,7 +216,7 @@ function insertRating($userEmail, $productId, $rating, $comments){
     {
         echo 'ERROR: ' . $ex->getMessage();
     }
-    
+
 }
 
 function updateRating($userEmail, $productId, $rating, $comments){
@@ -226,13 +226,13 @@ function updateRating($userEmail, $productId, $rating, $comments){
         $conn = getConnectionPDO();
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = " update Rating set rating = :rating, comments = :comments where userEmail = :user_email and productId = :product_id ";
-        $params = array(':user_email' => $userEmail, 
-                         ':product_id' => $productId, 
-                         ':rating' => $rating, 
+        $params = array(':user_email' => $userEmail,
+                         ':product_id' => $productId,
+                         ':rating' => $rating,
                          ':comments' => $comments);
          $ps = $conn->prepare($sql);
          return $ps->execute($params);
-        
+
     }
     catch (PDOException $ex)
     {
@@ -242,31 +242,31 @@ function updateRating($userEmail, $productId, $rating, $comments){
     {
         echo 'ERROR: ' . $ex->getMessage();
     }
-    
+
 }
 
 function getMarketProduct($link) {
         // Initialize cURL session
       $ch = curl_init();
-      
+
       // Set the URL of the page file to download.
       curl_setopt($ch, CURLOPT_URL, $link);
 
       // Ask cURL to write the contents to a file
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      
+
       //Execute the c session
       $content = curl_exec($ch);
-      
-      // Close cURL session 
+
+      // Close cURL session
       curl_close($ch);
       // Close file
 
       return $array = json_decode(trim($content), TRUE);
 }
 
-function createNewUser($useremail, $userfirst, $userlast, $usergender, 
-    $cellphone, $homephone, $address, $city, $state, $zip, 
+function createNewUser($useremail, $userfirst, $userlast, $usergender,
+    $cellphone, $homephone, $address, $city, $state, $zip,
      $userpass, $userrole, $search){
      try
     {
@@ -277,7 +277,7 @@ function createNewUser($useremail, $userfirst, $userlast, $usergender,
         if ((strlen($useremail) > 0) && (strlen($userpass) > 0))
         {
             $sql = " select userEmail from User" .
-                                " where userEmail = :user_email";                            
+                                " where userEmail = :user_email";
             $ps = $conn->prepare($sql);
             $ps->bindParam(':user_email', $useremail);
             $ps->execute();
@@ -296,9 +296,9 @@ function createNewUser($useremail, $userfirst, $userlast, $usergender,
                        " values (:user_email, :user_first, :user_last, :user_gender, :cell_phone " .
                        " , :address, :city, :state, :zip, :home_phone, :user_role, :user_pass, :search)";
 
-                $params = array(':user_email' => $useremail, 
-                        ':user_first' => $userfirst, 
-                        ':user_last' => $userlast, 
+                $params = array(':user_email' => $useremail,
+                        ':user_first' => $userfirst,
+                        ':user_last' => $userlast,
                         ':user_gender' => $usergender,
                         ':cell_phone' => $cellphone,
                         ':address' => $address,
@@ -306,7 +306,7 @@ function createNewUser($useremail, $userfirst, $userlast, $usergender,
                         ':state' => $state,
                         ':zip' => $zip,
                         ':home_phone' => $homephone,
-                        ':user_role' => $userrole, 
+                        ':user_role' => $userrole,
                         ':user_pass' => $userpass,
                         ':search' => $search);
 
@@ -328,6 +328,3 @@ function createNewUser($useremail, $userfirst, $userlast, $usergender,
 }
 
 ?>
-
-
-
