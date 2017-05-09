@@ -123,19 +123,21 @@
                     <!-- TODO: Better to create a php function to do all of the below -->
                     <!-- TODO 2: Formatting -->
                     <?php
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, 'http://hroboter.com/sendproductsinfo.php');
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                        $content = curl_exec($ch);
-                        curl_close($ch);
-                        $array = json_decode(trim($content), TRUE);
+                        $json_data = file_get_contents('assets/data/hoang_data.dat'); 
+                        $array = json_decode(trim($json_data), TRUE);
+                        //$ch = curl_init();
+                        //curl_setopt($ch, CURLOPT_URL, 'http://hroboter.com/sendproductsinfo.php');
+                        //curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                        //$content = curl_exec($ch);
+                        //curl_close($ch);
+                        //$array = json_decode(trim($content), TRUE);
                         //var_dump($array);
                         foreach ($array as $row) {
                             echo '<div class="col-sm-4 col-lg-4 col-md-4">';
                             echo '<div class="thumbnail">';
-                            echo '<img class="img-rounded mh-100"src="http://hroboter.com/photos/'.$row['image'].'" alt="">';
+                            echo '<img class="img-rounded mh-100"src="'.$row['image'].'" alt="">';
                             echo '<div class="caption">';
-                            echo '<h4><a href="http://hroboter.com/single_product_page.php?id='.$row['id'].'">'.$row['name'].'</a></h4>';
+                            echo '<h4><a href="http://hroboter.com/single_product_page.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
                             echo '<p><h4>$'.$row['price'].'</h4></p>';
                             echo '<p>'.$row['description'].'</p>';
                             echo '</div>';
@@ -145,13 +147,9 @@
                     ?>
 
                     <?php
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, 'http://taipham.info/marketplace/get_products.php');
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                        $content = curl_exec($ch);
-                        curl_close($ch);
-                        $array = json_decode(trim($content), TRUE);
-                        //var_dump($array);
+                        $json_data = file_get_contents('assets/data/tai_data.dat'); 
+                        $array = json_decode(trim($json_data), TRUE);
+                    
                         foreach ($array as $row) {
                             echo '<div class="col-sm-4 col-lg-4 col-md-4">';
                             echo '<div class="thumbnail">';
@@ -166,38 +164,24 @@
                         }
                     ?>
 
-                    <?php
-                        // Initialize cURL session
-                        $ch = curl_init();
                     
-                        // Set the URL of the page file to download.
-                        curl_setopt($ch, CURLOPT_URL, 'http://matchall.com/auto_out.php');
-
-                        // Ask cURL to write the contents to a file
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                    <?php
+                        $json_data = file_get_contents('assets/data/phong_data.dat');
                         
-                        //Execute the c session
-                        $content = curl_exec($ch);
-                        
-                        // Close cURL session 
-                        curl_close($ch);
-                        // Close file
-                        
-                        $array = json_decode(trim($content), TRUE);
-                        //var_dump($array);
+                        $array = json_decode(trim($json_data), TRUE);
                         foreach ($array as $row) {
                             echo '<div class="col-sm-4 col-lg-4 col-md-4">';
                             echo '<div class="thumbnail">';
-                            echo '<img src="http://matchall.com/photo/'.$row['image'].'" alt="">';
+                            echo '<img src="'.$row['image'].'" alt="">';
                             echo '<div class="caption">';
-                            echo '<h4><a href="http://match-all.com/matchall/detail.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
+                            echo '<h4><a href="http://match-all.com/detail.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
                             echo '<p><h4>$'.$row['price'].'</h4></p>';
                             echo '<p>'.$row['description'].'</p>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
                         }
-                    ?>
+                    ?> 
                 </div>
 
             </div>
