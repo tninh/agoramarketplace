@@ -26,19 +26,23 @@
         </div>
         <h2 class="form-signin-heading">Create An Account</h2>
 
-
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required>
         <label for="firstname" class="sr-only">First Name</label>
         <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" required>
         <label for="lastname" class="sr-only">Last Name</label>
         <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" required>
         <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required>
-        <label for="email" class="sr-only">Email</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required>   
         <label for="cellphone" class="sr-only">Cell Phone</label>
         <input type="tel" id="inputCellPhone" class="form-control" placeholder="Cell Phone" required>
+        <label for="homephone" class="sr-only">Home Phone</label>
+        <input type="tel" id="inputHomePhone" class="form-control" placeholder="Home Phone" required>
+        <label for="address" class="sr-only">Address</label>
+        <input type="text" id="inputAddress" class="form-control" placeholder="Address" required>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Create Your Agora Account</button>
       </form>
 
