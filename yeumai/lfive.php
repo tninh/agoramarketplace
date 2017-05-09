@@ -1,12 +1,4 @@
-<?php
-    session_start();
 
-    if (count($_SESSION) != 0){
-        var_dump($_SESSION);
-    }
-    else var_dump($_SESSION);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,35 +124,7 @@
 
 
             <div class="row">
-                <?php
-                //get the last 5 visited items ID.
-                $arr=array_reverse($_COOKIE);
-                $keyArr= [];
-                $i=0;
-                foreach($arr as $key => $value){
-                    if ($key == "PHPSESSID"){}
-                    else {
-                        array_push($keyArr, $value);
-                        $i++;
-                        if ($i == 5) break;
-                    }
-                }
-                foreach ($keyArr as $value){
-                    $temp = explode("_", $value);
 
-                    if($temp[0] == "knowasian"){
-
-                        $link = "http://" . $temp[0] . ".com/companywebsite/getProduct.php?id=" . $temp[1];
-                        $temp = file_get_contents($link);
-                        $row = json_decode($temp, true);
-                        $temp= "http://knowasian.com/companywebsite/Tradition.php?id=" . $row["ID"];
-                        echo "<div style='float:left;margin:20px;'><label>" . $row["TITLE"] . "</label><br />";
-                        echo "<a href=" . $temp . ">" . "<img src=" . $row["PICTURE"] . " style='width:340px;height:228px;'>" . "</a></div>";
-                        $a="<a href=" . $temp . ">" . "<img src=" . $row["PICTURE"] . " style='width:340px;height:228px;'>" . "</a></div>";
-
-                    }
-                }
-                ?>
 
             </div>
 
