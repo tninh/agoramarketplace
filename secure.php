@@ -22,36 +22,60 @@
 	<div class="container">
 		<div class="row">
 			<div class= "col-xs-14">
-				<a href="home.php" class="btn btn-primary btn-lg" role="button" >Home</a>
+				<a href="home.php" class="btn btn-primary btn-lg" role="button">Home</a>
 				<a href="products.php" class="btn btn-primary btn-lg" role="button">Products</a>
 				<a href="news.php" class="btn btn-primary btn-lg" role="button">News</a>
 				<a href="about.php" class="btn btn-primary btn-lg" role="button">About</a>
 				<a href="contacts.php" class="btn btn-primary btn-lg" role="button">Contacts</a>
-				<button type="button" class="btn btn-success btn-lg" >User</button>
 			</div>
 		</div>
 	</div>
 	<div>
 	</div>
 	<div class="container">
-		<a class="btn btn-default pull-right" href="secure.php" style = "height:40px; width:120px" >SignUp</a>
-		<a class="btn btn-default pull-right " href="secure.php"  style = "height:40px; width:120px">Login</a>
+		<form class="form-signin" method="post" action = "password.php" >
+			<h2 class="form-signin-heading">Please Sign In</h2>
+			<br />
+			<table border = "0" cellspacing="10" style = "height: 80px; width: 320px; font-size:12pt" cellpadding ="10">
+				<tr>
+					<td colspan="3">
+						<strong>User Name:  </strong>
+					</td>
+
+					<td colspan = "3">
+						<span style="margin-left: 6em;">
+						<input size = "40" name = "USERNAME" id="usernameID" class="form-control" style="height:42px; width:200px"/>
+						</span>
+					</td>
+				</tr>
+					<tr>
+					<td colspan="3">
+						<strong>Password:  </strong>
+					</td>
+
+					<td colspan = "3">
+						<span style="margin-left: 6em;">
+						<input size="40" name= "PASSWORD" id ="passwordID" class="form-control" style = "height: 42px; width: 200px" type="password">
+						</span>
+					</td>
+				</tr>
+				
+			</table>
+			<table border = "0" cellspacing="10" style = "height: 80px; width: 80px; font-size:12pt" cellpadding ="10">
+				<tr>
+					<td colspan ="1">
+						<input type = "submit" name = "login" value= "login"   style = "height: 40px; width:120px"/>
+					</td>
+					
+					<td colspan = "2">
+						<input type = "submit" name = "signup" value= "signup"  style = "height:40px; width:120px" />
+					</td>
+				</tr>
+			</table>
+		</form>
+
 	</div>
-	<div class="container">
-			<div class= "row-md-4 text-center">
-				<a href="createuser.php" class="btn btn-primary btn-lg btn-space" style="width:300px"  role="button" >Create </a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="searchform.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">Query</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User Info</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserallcompaniesinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User in Market Place Info </a>
-			</div>
-	</div>
-			
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

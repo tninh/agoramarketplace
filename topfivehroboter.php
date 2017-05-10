@@ -8,7 +8,7 @@
 
 <body>
     <!-- include header navigation -->
-        <?php $current_page = "http://match-all.com/product.php"; ?>
+        <?php $current_page = "product.php"; ?>
         <?php include 'header_nav.inc.php'; ?>
 
     <!-- Page Content -->
@@ -37,12 +37,11 @@
                                     print " <h5>$ " . $row["price"] . "</h5> \n";
                                    print " <h5>" . $row["location"] . "</h5> \n";
                                    print " <div class='ratings'> \n";
-                                   print " <p class='pull-right'>" . $row["count"] ." reviews</p>";
+                                   print " <p class='pull-right'>" . getCountRatingById($row["id"]) ." reviews</p>";
                                    print "<p>";
-                                     $round_rating = round($row["avgRating"]);
-                                     $avgRating = number_format($row["avgRating"], 1, '.', '');
-                                     drawStars($round_rating);
-                                     print "&nbsp&nbsp" . $avgRating  . " stars";
+                                     $rating = getAvgRatingById($row["id"]);
+                                      drawStars(round($rating));
+                                      print "&nbsp&nbsp" . number_format($rating, '1', '.', '') . " stars";
                                    print "</p>";    
                                    print " </div> \n";                          
                                 print " </div> \n";

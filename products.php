@@ -19,39 +19,84 @@
   </head>
   <body>
     <h1 class="text-primary">HROBOTER</h1>
-	<div class="container">
+  	<div class="container">
 		<div class="row">
 			<div class= "col-xs-14">
-				<a href="home.php" class="btn btn-primary btn-lg" role="button" >Home</a>
-				<a href="products.php" class="btn btn-primary btn-lg" role="button">Products</a>
+				<a href="home.php" class="btn btn-primary btn-lg" role="button">Home</a>
+				<button type="button" class="btn btn-success btn-lg">Products</button>
 				<a href="news.php" class="btn btn-primary btn-lg" role="button">News</a>
 				<a href="about.php" class="btn btn-primary btn-lg" role="button">About</a>
 				<a href="contacts.php" class="btn btn-primary btn-lg" role="button">Contacts</a>
-				<button type="button" class="btn btn-success btn-lg" >User</button>
+				<a href="user.php" class="btn btn-primary btn-lg" role="button">User</a>
 			</div>
 		</div>
 	</div>
 	<div>
 	</div>
 	<div class="container">
+		
 		<a class="btn btn-default pull-right" href="secure.php" style = "height:40px; width:120px" >SignUp</a>
-		<a class="btn btn-default pull-right " href="secure.php"  style = "height:40px; width:120px">Login</a>
+		<a class="btn btn-default pull-right " href="secure.php"  style = "height: 40px; width:120px">Login</a>
+			
 	</div>
 	<div class="container">
-			<div class= "row-md-4 text-center">
-				<a href="createuser.php" class="btn btn-primary btn-lg btn-space" style="width:300px"  role="button" >Create </a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="searchform.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">Query</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User Info</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserallcompaniesinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User in Market Place Info </a>
-			</div>
+	<h4>Cookies <h4>
+	<h4><strong><a href="product/lastfive.php" >Last 5 Visited Items</a></strong> </h4>
+	<h4><strong><a href="product/mostfive.php" >Most 5 Visited Items</a></strong> </h4>
 	</div>
+	 <h2 class="text-primary">Products of HRoboter</h2>
+	<table class="table">
+		
+		<thead>
+			<tr>
+				<th>Produce Names</th>
+				<th>Descriptions</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php
+			$db_host = "localhost";
+			$db_user = "hroboter_hoang";
+			$db_password = "Angela2014";
+			$db_name = "hroboter_user";
+			$dbc = mysqli_connect($db_host, $db_user, $db_password, $db_name)
+			OR die ('Unable to connect to MySQL' . mysqli_connect_error());
+
+			$query = "SELECT * FROM PRODUCTS;";
+			$response = mysqli_query($dbc, $query);
+
+			function ShowTable($response){
 			
+			echo "<table class='table table-striped'>
+				<thead> 
+				  <tr>
+					<th>ID</th>
+					<th>Name</th> 
+					<th>Price</th>
+					<th>Image</th>
+					<th>Description</th>
+				  </tr>
+				</thead><tbody>";
+				while($row = mysqli_fetch_assoc($response)){
+			
+					echo "<tr>";
+					echo "<td>" . $row["id"];
+					echo "<td>".$row["name"] ;
+					echo "<td>"."$ " . $row["price"] ;
+					echo "<td><img src=\"photos/". $row["image"] ."\""."/>";
+					echo "<td>" . $row["description"] ;
+					echo"</td></tr>";
+				}
+				echo "</tbody></table>";
+			}
+
+			ShowTable($response);
+			mysqli_close($dbc);
+			?>
+		</tbody>
+	</table>
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

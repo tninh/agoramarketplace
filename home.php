@@ -22,7 +22,7 @@
 	<div class="container">
 		<div class="row">
 			<div class= "col-xs-14">
-				<a href="http://hroboter.com/home.php" class="btn btn-success btn-lg" role="button">Home</a>
+				<button type="button" class="btn btn-success btn-lg" >Home</button>
 				<a href="http://hroboter.com/products.php" class="btn btn-primary btn-lg" role="button">Products</a>
 				<a href="news.php" class="btn btn-primary btn-lg" role="button">News</a>
 				<a href="about.php" class="btn btn-primary btn-lg" role="button">About</a>
@@ -34,6 +34,7 @@
 	<div>
 	</div>
 	<div class="container">
+		
 		<a class="btn btn-default pull-right" href="secure.php" style = "height:40px; width:120px" >SignUp</a>
 		<a class="btn btn-default pull-right " href="secure.php"  style = "height:40px; width:120px">Login</a>
 			
@@ -45,7 +46,7 @@
 			</div>
 
 			<div class="col-lg-3 col-md-4 col-sm-6">
-				<a class=" img-responsive thumbnail" >
+				<a  class=" img-responsive thumbnail" >
 					<p><span class="h4">1. Cozmo</span>  -  price: $175</p>
 					<img src="photos/cozmo.jpg">
 				</a>
@@ -57,7 +58,7 @@
 				</a>
 			</div>
 			<div class="col-lg-3 col-md-4 col-sm-6">
-				<a href="photos/puppydog.jpg" class=" img-responsive thumbnail" >
+				<a class=" img-responsive thumbnail" >
 					<p><span class="h4">3. Puppy Dog</span> -  price: $64</p>
 					<img src="photos/puppydog.jpg">
 				</a>
@@ -69,13 +70,13 @@
 				</a>
 			</div>
 			<div class="col-lg-3 col-md-4 col-sm-6">
-				<a  class=" img-responsive thumbnail" >
+				<a href="photos/ubtech.jpg" class=" img-responsive thumbnail" >
 					<p><span class="h4">5. Ubtech</span>   - price:    $477</p>
 					<img src="photos/ubtech.jpg">
 				</a>
 			</div>
 			<div class="col-lg-3 col-md-4 col-sm-6">
-				<a class=" img-responsive thumbnail" >
+				<a  class=" img-responsive thumbnail" >
 					<p><span class="h4">6. WowWee</span>  -  price: $55</p>
 					<img src="photos/wowwee.jpg">
 				</a>

@@ -22,36 +22,36 @@
 	<div class="container">
 		<div class="row">
 			<div class= "col-xs-14">
-				<a href="home.php" class="btn btn-primary btn-lg" role="button" >Home</a>
+				<a href="home.php" class="btn btn-primary btn-lg" role="button">Home</a>
 				<a href="products.php" class="btn btn-primary btn-lg" role="button">Products</a>
 				<a href="news.php" class="btn btn-primary btn-lg" role="button">News</a>
 				<a href="about.php" class="btn btn-primary btn-lg" role="button">About</a>
-				<a href="contacts.php" class="btn btn-primary btn-lg" role="button">Contacts</a>
-				<button type="button" class="btn btn-success btn-lg" >User</button>
+				<button type="button"  class="btn btn-success btn-lg" >Contacts</button>
+				<a href="user.php" class="btn btn-primary btn-lg" role="button">User</a>
 			</div>
 		</div>
 	</div>
 	<div>
 	</div>
 	<div class="container">
+		
 		<a class="btn btn-default pull-right" href="secure.php" style = "height:40px; width:120px" >SignUp</a>
-		<a class="btn btn-default pull-right " href="secure.php"  style = "height:40px; width:120px">Login</a>
-	</div>
-	<div class="container">
-			<div class= "row-md-4 text-center">
-				<a href="createuser.php" class="btn btn-primary btn-lg btn-space" style="width:300px"  role="button" >Create </a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="searchform.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">Query</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User Info</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserallcompaniesinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User in Market Place Info </a>
-			</div>
-	</div>
+		<a class="btn btn-default pull-right " href="secure.php"  style = "height: 40px; width:120px">Login</a>
 			
+	</div>
+	<h2 class="text-primary">Contacts</h2>
+	<div class="container">
+		<div class="row">
+			<?php
+				echo "<h1 class='ui header'>Developer Contact</h1><br>";
+				$filecontact = fopen('contact.txt', 'r');
+				while($line =fgets($filecontact)){
+					echo( $line."<br>");
+				}
+				fclose($filecontact);
+			?>
+		</div>
+	</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

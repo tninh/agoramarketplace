@@ -1,0 +1,10 @@
+.customDiv {
+	margin-bottom:30px;
+	min-height:300px;
+	background-color:white;
+	text-align:center;
+	font-size:medium;
+}
+.btn-space {
+	margin-top: 10px
+}

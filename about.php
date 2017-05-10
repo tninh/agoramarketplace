@@ -19,39 +19,41 @@
   </head>
   <body>
     <h1 class="text-primary">HROBOTER</h1>
+ 
 	<div class="container">
 		<div class="row">
 			<div class= "col-xs-14">
-				<a href="home.php" class="btn btn-primary btn-lg" role="button" >Home</a>
+				<a href="home.php" class="btn btn-primary btn-lg" role="button">Home</a>
 				<a href="products.php" class="btn btn-primary btn-lg" role="button">Products</a>
 				<a href="news.php" class="btn btn-primary btn-lg" role="button">News</a>
-				<a href="about.php" class="btn btn-primary btn-lg" role="button">About</a>
+				<button type="button" class="btn btn-success btn-lg" >About</button>
 				<a href="contacts.php" class="btn btn-primary btn-lg" role="button">Contacts</a>
-				<button type="button" class="btn btn-success btn-lg" >User</button>
+				<a href="user.php" class="btn btn-primary btn-lg" role="button">User</a>
 			</div>
 		</div>
 	</div>
 	<div>
 	</div>
 	<div class="container">
+		
 		<a class="btn btn-default pull-right" href="secure.php" style = "height:40px; width:120px" >SignUp</a>
-		<a class="btn btn-default pull-right " href="secure.php"  style = "height:40px; width:120px">Login</a>
-	</div>
-	<div class="container">
-			<div class= "row-md-4 text-center">
-				<a href="createuser.php" class="btn btn-primary btn-lg btn-space" style="width:300px"  role="button" >Create </a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="searchform.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">Query</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User Info</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserallcompaniesinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User in Market Place Info </a>
-			</div>
-	</div>
+		<a class="btn btn-default pull-right " href="secure.php"  style = "height: 40px; width:120px">Login</a>
 			
+	</div>
+  <h2 class="text-primary">About</h2>
+	<div class="container">
+		<div class="row">
+			<dl class="dl-horizontal">
+				<dt> Products</dt>
+				<dd> Toy robots </dd>
+
+				<dt> Service</dt>
+				<dd> Sell and maintenance robots</dd>
+				<dt> Technology</dt>
+				<dd> Hi-tech devices</dd>
+			</dl>
+		</div>
+	</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

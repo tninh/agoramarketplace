@@ -9,6 +9,7 @@
 			$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	    
+			//$query = "SELECT * FROM PRODUCTS;";
 			$query = " SELECT distinct p.*, d.*" .
                   " from  PRODUCTS p " .
                   " INNER JOIN ( " .

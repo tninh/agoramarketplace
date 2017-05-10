@@ -6,7 +6,7 @@
 
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <script type = "text/javascript">
+     <script type = "text/javascript">
         function validate()
         {        
           document.getElementById('rating').value = document.getElementById('count').innerHTML;
@@ -26,9 +26,8 @@
 <body>
     <!-- include header navigation -->
         <?php $current_page = "detail.php"; ?>
-        <?php include 'header_nav.inc.php'; ?>
-
-    <!-- Page Content -->
+		<?php include 'header_nav.inc.php'; ?>
+	<!-- Page Content -->
     <div class="container">
         <div class="row">
 
@@ -38,34 +37,32 @@
 
                 <!-- Portfolio Item Row -->
                    <?php 
-                        try
-                          {
-                            $conn = getConnectionPDO();
-                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    
-                            $id = filter_input(INPUT_GET, "id");
+							$servername = "localhost";
+							$username = "hroboter_hoang";
+							$password = "Angela2014";
+							$dbname = "hroboter_user";
+						
+							try {
+								$conn = new PDO("mysql:host=localhost;dbname=hroboter_user", "hroboter_hoang", "Angela2014");
+								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $query = " SELECT * from Product where id = :id ";
+                $id = filter_input(INPUT_GET, "id");	   
+							  $query = "SELECT * FROM PRODUCTS where id = :id;";
                             
-                            $params = array(':id' => $id);
-                            $ps = $conn->prepare($query);
-                            $ps->execute($params);
-                            $data = $ps->fetchAll(PDO::FETCH_ASSOC);
-
-                            
-                            foreach ($data as $row) {
-                                        print " <img class='mg-responsive' src='" . $row["image"] . "' alt=''> \n";
-                                        print " <div class='caption-full'> \n";
-                                            print " <h3>" . $row["title"] . "</h3> \n";
-                                            print " <h4 class='pull-right'>" . $row["price"] . "</h4> \n";
-                                            print " <h4>" . $row["location"] . "</h4> \n";
-                                            print " <p>"  . $row["description"] . " </p> \n";
+                  $params = array(':id' => $id);
+                  $ps = $conn->prepare($query);
+                  $ps->execute($params);
+                  $data = $ps->fetchAll(PDO::FETCH_ASSOC);
+                  foreach ($data as $row) {
+                               print " <img class='mg-responsive' src='" . $row["image"] . "' alt=''> \n";
+                              print " <div class='caption-full'> \n";
+  				          print " <h3>" . $row["title"] . "</h3> \n";
+										print " <h4 class='pull-right'>" . $row["price"] . "</h4> \n";
+										print " <p>"  . $row["description"] . " </p> \n";
                                         print " </div> \n";
                                        
                             }
-
                             $query = " SELECT avg(rating) as avg_rating, count(rating) as count_rating from Rating where productId = :id ";
-                            
                             $params = array(':id' => $id);
                             $ps = $conn->prepare($query);
                             $ps->execute($params);
@@ -82,8 +79,6 @@
                                 print "</p>";
                                 print " </div> \n";
                             }
-
-                
                             $query = " SELECT R.userEmail, R.rating, R.comments from Rating R where productId = :id ";
                             
                             $params = array(':id' => $id);
@@ -116,38 +111,34 @@
 
                    ?>
                     <section> 
-                      <form name="reviewform" id='reviewform' method='GET' action="review_p.php">                               
-                           
+                      <form class='form-inline' id='reviewform' method='GET' action='review_p.php'>                               
+                            <div class='form-group'> 
                               <input type="hidden" name="userEmail" id='userEmail' 
-                                      value="<?php print $_SESSION[$g_login_session_key]; ?>">    
-                          
+                                      value="<?php print $_SESSION[$g_login_session_key]; ?>">        
                               <input type="hidden" name="productId" id='productId' 
-                                      value="<?php print filter_input(INPUT_GET, "id"); ?>">    
-                           
-                               <input type="hidden" name="rating" id='rating' >        
-                                   
-                              <textarea id='comments' name='comments' class='form-control' rows='3' placeholder='Your comments'/> </textarea>
-                           
-                          <div class="container">
-                            <div class="row lead">
-                                  <div id="stars" class="starrr"></div>
-                                 <span name="count" id="count" hidden></span>
-                            </div>
-                          </div>
-                                                         
+                                      value="<?php print filter_input(INPUT_GET, "id"); ?>">      
+                               <input type="hidden" name="rating" id='rating' >                       
+                              <textarea id='comments' name='comments' class='form-control' rows='3' placeholder='Your comments' style="margin: 0px; width: 490px;"/> </textarea>
+                              <div class="container">
+                                <div class="row lead">
+                                      <div id="stars" class="starrr"></div>
+                                     <span name="count" id="count" hidden></span>
+                                </div>
+                              </div>
+                             
+                           </div>                                    
                           <div class='text-right'> 
-                        
+                          <!--  <button class='btn btn-success' type="submit" >Leave a Review</button>  -->
                             <button class='btn btn-success' type="button" onclick="validate()">Leave a Review</button> 
                           </div> 
                       </form>  
-                   </section> 
+                  </section> 
                     
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
+<!-- Footer -->
                          
     <?php include 'footer.inc.php'; ?>
 
@@ -157,7 +148,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/starrating.js"></script>
-
+	
 </body>
 
 </html>

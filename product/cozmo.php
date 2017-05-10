@@ -22,39 +22,62 @@
 	<div class="container">
 		<div class="row">
 			<div class= "col-xs-14">
-				<a href="home.php" class="btn btn-primary btn-lg" role="button" >Home</a>
-				<a href="products.php" class="btn btn-primary btn-lg" role="button">Products</a>
-				<a href="news.php" class="btn btn-primary btn-lg" role="button">News</a>
-				<a href="about.php" class="btn btn-primary btn-lg" role="button">About</a>
-				<a href="contacts.php" class="btn btn-primary btn-lg" role="button">Contacts</a>
-				<button type="button" class="btn btn-success btn-lg" >User</button>
+				<a href="../home.php" class="btn btn-primary btn-lg" role="button" >Home</a>
+				<a href="../products.php" class="btn btn-success btn-lg" role="button">Products</a>
+				<a href="../news.php" class="btn btn-primary btn-lg" role="button">News</a>
+				<a href="../about.php" class="btn btn-primary btn-lg" role="button">About</a>
+				<a href="../contacts.php" class="btn btn-primary btn-lg" role="button">Contacts</a>
+				<a href="../user.php" class="btn btn-primary btn-lg" role="button">User</a>
 			</div>
 		</div>
 	</div>
 	<div>
 	</div>
 	<div class="container">
+		
 		<a class="btn btn-default pull-right" href="secure.php" style = "height:40px; width:120px" >SignUp</a>
 		<a class="btn btn-default pull-right " href="secure.php"  style = "height:40px; width:120px">Login</a>
+			
 	</div>
 	<div class="container">
-			<div class= "row-md-4 text-center">
-				<a href="createuser.php" class="btn btn-primary btn-lg btn-space" style="width:300px"  role="button" >Create </a>
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Items</h3>
 			</div>
-			<div class= "row-md-4 text-center">
-				<a href="searchform.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">Query</a>
+
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<a class=" img-responsive thumbnail" >
+					<p><span class="h4">Cozmo</span>  -  price: $175</p>
+					<img src="../photos/cozmo.jpg">
+				</a>
 			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User Info</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserallcompaniesinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User in Market Place Info </a>
-			</div>
-	</div>
 			
+		</div>
+			
+		<div class="row">
+			<p> Cozmo is a real-life robot like you've only seen in movies, with a one-of-a-kind personality that evolves the more you hang out. </br>	
+			Cozmo expresses real emotions in response to your actions  </br>
+			Requires a free app and the processing power of your compatible mobile phone/tablet to access high level robotics functions that brings Cozmo to life.  </br>
+			New games and upgrades are unlocked the more you play. Durability and security have been rigorously tested.  </br>
+			The Cozmo SDK Beta is a connected robotics platform for makers, hobbyists, educators and researchers.   </br>
+			</p>
+		</div>
+		
+	</div>
+	
+	<?php
+		
+		$robotID = "cozmo";
+		$sizeNext = $_COOKIE[$robotID ] + 1;
+	
+		// write to cookie
+		setcookie( $robotID,  $sizeNext , time() + 4320000);
+	?>
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
+ 

@@ -1,11 +1,16 @@
 <?php
 $g_login_session_key = "LOGIN_SESSION_KEY";
 
+$servername = "localhost";
+$username = "hroboter_hoang";
+$password = "Angela2014";
+$dbname = "hroboter_user";
+
 //using mysqli
 function getConnection()
 {
         //Connecting to mysql database
-        $conn = mysqli_connect('localhost', 'user', 'password', 'dbname')
+        $conn = mysqli_connect($servername, $username, $password ,$dbname)
             or die('Error connecting to MySQL server.');
         return $conn;
 }
@@ -15,9 +20,9 @@ function getConnection()
 function getConnectionPDO()
 {
    try {
-    $conn = new PDO("mysql:host=localhost;dbname=dbname", "user", "password");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+   
+	$conn = new PDO("mysql:host=localhost;dbname=hroboter_user", "hroboter_hoang", "Angela2014");
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    }
    catch(PDOException $e)
    {
@@ -148,7 +153,6 @@ function getCountRatingById($id){
 
 }
 
-
 function Redirect($url)
 {
     //header("Location:  " . $url);
@@ -157,7 +161,6 @@ function Redirect($url)
     </script>";
     exit();
 }
-
 
 function checkRating($userEmail, $productId, $rating, $comments){
 
@@ -189,7 +192,6 @@ function checkRating($userEmail, $productId, $rating, $comments){
     {
         echo 'ERROR: ' . $ex->getMessage();
     }
-
 }
 
 function insertRating($userEmail, $productId, $rating, $comments){
@@ -216,7 +218,6 @@ function insertRating($userEmail, $productId, $rating, $comments){
     {
         echo 'ERROR: ' . $ex->getMessage();
     }
-
 }
 
 function updateRating($userEmail, $productId, $rating, $comments){

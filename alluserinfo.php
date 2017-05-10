@@ -27,7 +27,7 @@
 				<a href="news.php" class="btn btn-primary btn-lg" role="button">News</a>
 				<a href="about.php" class="btn btn-primary btn-lg" role="button">About</a>
 				<a href="contacts.php" class="btn btn-primary btn-lg" role="button">Contacts</a>
-				<button type="button" class="btn btn-success btn-lg" >User</button>
+				<a href="user.php" class="btn btn-primary btn-lg" role="button">User</a>
 			</div>
 		</div>
 	</div>
@@ -37,21 +37,45 @@
 		<a class="btn btn-default pull-right" href="secure.php" style = "height:40px; width:120px" >SignUp</a>
 		<a class="btn btn-default pull-right " href="secure.php"  style = "height:40px; width:120px">Login</a>
 	</div>
-	<div class="container">
-			<div class= "row-md-4 text-center">
-				<a href="createuser.php" class="btn btn-primary btn-lg btn-space" style="width:300px"  role="button" >Create </a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="searchform.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">Query</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User Info</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserallcompaniesinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User in Market Place Info </a>
-			</div>
-	</div>
-			
+
+
+<?php
+	$db_host = "localhost";
+	$db_user = "hroboter_hoang";
+	$db_password = "Angela2014";
+	$db_name = "hroboter_user";
+	$dbc = mysqli_connect($db_host, $db_user, $db_password, $db_name)
+	OR die ('Unable to connect to MySQL' . mysqli_connect_error());
+
+	$query = "SELECT * FROM USERTABLE;";
+	$response = mysqli_query($dbc, $query);
+
+	function ShowTable($response){
+	
+	echo "<table class='table table-striped'>
+		<thead> 
+		  <tr>
+		    <th>FirstName</th>
+	        <th>LastName</th> 
+			<th>Email</th>
+		    <th>Address</th>
+		    <th>Home Phone</th>
+		    <th>Cell Phone</th>
+		  </tr>
+		</thead><tbody>";
+		while($row = mysqli_fetch_assoc($response)){
+	
+			echo "<tr>";
+			echo "<td>" . $row["FirstName"]. "<td>" . $row["LastName"] . "<td>" . $row["Email"] . "<td>" . $row["HomeAddress"] . "<td>" . $row["HomePhone"] . "<td>" . $row["CellPhone"] . "</td></tr>";
+		}
+		echo "</tbody></table>";
+
+	}
+
+  	ShowTable($response);
+  	mysqli_close($dbc);
+  ?>
+  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

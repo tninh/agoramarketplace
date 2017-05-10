@@ -1,0 +1,9 @@
+HRoboter
+
+Phone: +1 408 123 4567
+Email: hoang1127@gmail.com
+Class: CMPE 272
+LAB Num: #3
+Address: 123 Capital Ave.
+San Jose CA. 95122
+USA

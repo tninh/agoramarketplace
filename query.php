@@ -34,24 +34,24 @@
 	<div>
 	</div>
 	<div class="container">
+		
 		<a class="btn btn-default pull-right" href="secure.php" style = "height:40px; width:120px" >SignUp</a>
 		<a class="btn btn-default pull-right " href="secure.php"  style = "height:40px; width:120px">Login</a>
-	</div>
-	<div class="container">
-			<div class= "row-md-4 text-center">
-				<a href="createuser.php" class="btn btn-primary btn-lg btn-space" style="width:300px"  role="button" >Create </a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="searchform.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">Query</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User Info</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserallcompaniesinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User in Market Place Info </a>
-			</div>
-	</div>
 			
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class= "col-xs-14">
+				<a href="createuser.php" class="btn btn-primary btn-lg" role="button" >Create </a>
+				<a href="query.php" class="btn btn-primary btn-lg" role="button">Query</a>
+				<a href="alluserinfo.php" class="btn btn-primary btn-lg" role="button">All User Info</a>
+			</div>
+		</div>
+	</div>
+		
+	
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

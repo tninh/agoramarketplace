@@ -22,36 +22,54 @@
 	<div class="container">
 		<div class="row">
 			<div class= "col-xs-14">
-				<a href="home.php" class="btn btn-primary btn-lg" role="button" >Home</a>
-				<a href="products.php" class="btn btn-primary btn-lg" role="button">Products</a>
-				<a href="news.php" class="btn btn-primary btn-lg" role="button">News</a>
-				<a href="about.php" class="btn btn-primary btn-lg" role="button">About</a>
-				<a href="contacts.php" class="btn btn-primary btn-lg" role="button">Contacts</a>
-				<button type="button" class="btn btn-success btn-lg" >User</button>
+				<a href="../home.php" class="btn btn-primary btn-lg" role="button" >Home</a>
+				<a href="../products.php" class="btn btn-success btn-lg" role="button">Products</a>
+				<a href="../news.php" class="btn btn-primary btn-lg" role="button">News</a>
+				<a href="../about.php" class="btn btn-primary btn-lg" role="button">About</a>
+				<a href="../contacts.php" class="btn btn-primary btn-lg" role="button">Contacts</a>
+				<a href="../user.php" class="btn btn-primary btn-lg" role="button">User</a>
 			</div>
 		</div>
 	</div>
 	<div>
 	</div>
 	<div class="container">
+		
 		<a class="btn btn-default pull-right" href="secure.php" style = "height:40px; width:120px" >SignUp</a>
 		<a class="btn btn-default pull-right " href="secure.php"  style = "height:40px; width:120px">Login</a>
+			
 	</div>
 	<div class="container">
-			<div class= "row-md-4 text-center">
-				<a href="createuser.php" class="btn btn-primary btn-lg btn-space" style="width:300px"  role="button" >Create </a>
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Items</h3>
 			</div>
-			<div class= "row-md-4 text-center">
-				<a href="searchform.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">Query</a>
+
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<a class=" img-responsive thumbnail" >
+					<p><span class="h4">Wowwee</span>  -  price: $55</p>
+					<img src="../photos/wowwee.jpg">
+				</a>
 			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User Info</a>
-			</div>
-			<div class= "row-md-4 text-center">
-				<a href="alluserallcompaniesinfo.php" class="btn btn-primary btn-lg btn-space" style="width:300px" role="button">All User in Market Place Info </a>
-			</div>
+		</div>
+		<div class="row">
+			<p>  
+			 GestureSense allows your WowWee robot to respond to gesture-based interactions like swipes, claps, touch and more. </br>
+			BLE allows your WowWee product to seamlessly connect to and interact with your smart devices. </br>
+			Sound detection system allows your WowWee robot to react to noises in its environment. </br>
+			Free app provides control and/or enhanced gameplay on your smart device.  </br>
+
+			</p>
+		</div>
 	</div>
-			
+	<?php
+		
+		$robotID = "wowwee";
+		$sizeNext = $_COOKIE[$robotID ] + 1;
+		echo "size: " . $sizeNext ;
+		// write to cookie
+		setcookie( $robotID, $sizeNext , time() + 4320000);
+	?>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
