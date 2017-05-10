@@ -12,7 +12,7 @@ function getConnection()
 function getConnectionPDO()
 {
    try {
-    $conn = new PDO("mysql:host=localhost;dbname=dbname", "user", "password");
+    $conn = new PDO("mysql:dbname=cmpe272;host=cmpe272.db.10791046.hostedresource.com", "cmpe272", "Sanjose123!");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    }
    catch(PDOException $e)
