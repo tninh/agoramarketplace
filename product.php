@@ -74,6 +74,8 @@
                                              
                       $data = array_merge(getMarketProduct('http://hroboter.com/sendproductsinfo.php'));
                       foreach ($data as $row) {
+                           $countRating = getMarketProduct('http://hroboter.com/getCountRatingById.php?id='.$row["id"]);
+                           $avgRating = getMarketProduct('http://hroboter.com/getAvgRatingById.php?id='.$row["id"]);
                            print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
                              print " <div class='thumbnail'> \n";
                                 print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
@@ -82,12 +84,12 @@
                                     print " <h5>$ " . $row["price"] . "</h5> \n";
                                    print " <h5>" . $row["location"] . "</h5> \n";
                                    print " <div class='ratings'> \n";
-                                   print " <p class='pull-right'>" . getCountRatingById($row["id"]) ." reviews</p>";
+                                   print " <p class='pull-right'>" . $countRating ." reviews</p>";
                                    print "<p>";
-                                      $rating = number_format(getAvgRatingById($row["id"]), 1, '.', '');
-                                      $round_rating = round(getAvgRatingById($row["id"]));
+                                      $rating = number_format($avgRating, 1, '.', '');
+                                      $round_rating = round($avgRating);
                                       drawStars($round_rating);
-                                     print " " . $rating . " stars";
+                                     print "&nbsp&nbsp" . $rating . " stars";
                                    print "</p>";    
                                    print " </div> \n";                          
                                 print " </div> \n";

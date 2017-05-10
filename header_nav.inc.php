@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="product.php">Agora</a>
+                <a class="navbar-brand" href="http://match-all.com/index.php">Agora</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -43,13 +43,13 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="login.php">Log in</a>
+                        <a href="http://match-all.com/login.php">Log in</a>
                     </li>
                     <li>
-                        <a href="logout.php">Log out</a>
+                        <a href="http://match-all.com/logout.php">Log out</a>
                     </li>
                     <li>
-                        <a href="register.php">Register</a>
+                        <a href="http://match-all.com/register.php">Register</a>
                     </li>
                     
                 </ul>
