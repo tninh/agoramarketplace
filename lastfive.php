@@ -58,7 +58,8 @@
                             $link = "http://" . $temp[0] . ".com/companywebsite/getProduct.php?id=" . $temp[1];
                             $temp = file_get_contents($link);
                             $row = json_decode($temp, true);
-                            $temp= "http://knowasian.com/companywebsite/Tradition.php?id=" . $row["ID"];
+                            var_dump($row);
+                            $temp= "http://knowasian.com/companywebsite/detail.php?id=" . $row["ID"];
 
                         }
                         else if ($temp[0] == "taipham"){
@@ -79,11 +80,11 @@
                         else{}
                         print "<div class='col-sm-4 col-lg-4 col-md-4'> \n";
                         print "<div class='thumbnail'> \n";
-                        print "<a href=" . $temp . ">" . "<img src=" . $row["PICTURE"] . " style='width:256px;height:200px;'>" . "</a> \n";
+                        print "<a href=" . $temp . ">" . "<img src=" . $row["image"] . " style='width:256px;height:200px;'>" . "</a> \n";
                         print "<div class='caption'> \n";
-                        print "<h5><a href='detail?id=" . $row["ID"] ."'>" . $row["TITLE"] . "</a></h5> \n";
-                        //print " <h5>$ " . $row["price"] . "</h5> \n";
-                        //print " <h5>" . $row["location"] . "</h5> \n";
+                        print "<h5><a href='detail?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
+                        print " <h5>$ " . $row["price"] . "</h5> \n";
+                        print " <h5>" . $row["location"] . "</h5> \n";
                         print " </div> \n";
                         print " </div> \n";
                         print " </div> \n";
