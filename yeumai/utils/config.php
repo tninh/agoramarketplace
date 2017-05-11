@@ -238,7 +238,9 @@ function createNewUser($useremail, $userfirst, $userlast, $usergender,
             if (count($result) > 0)
             {
                 alert("This email already exists.");
-                return false;
+                echo "This email already exists.";
+                //return False;
+                return "This email already exists.";
             }
             else
             {
@@ -260,7 +262,8 @@ function createNewUser($useremail, $userfirst, $userlast, $usergender,
                         ':user_pass' => $userpass,
                         ':search' => $search);
                 $ps = $conn->prepare($sql);
-                return $ps->execute($params);
+                $ps->execute($params);
+                return "Lala";
             }
         }
     }

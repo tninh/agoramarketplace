@@ -8,11 +8,10 @@
     <body>
         <!-- include header navigation -->
         <?php $current_page = "register_p.php" ?>
-        <?php include 'header_nav.inc.php'; ?>
+        <?php include '../utils/header_nav.inc.php'; ?>
 
         <div class="container">
             <div class="row">
-            <?php include 'side_bar.inc.php';?>
 
             <section id="page">
                 <div id="page-bgtop">
@@ -43,12 +42,15 @@
                                         $cellphone, $homephone, $address, $city, $state, $zip, 
                                         $userpass, $userrole, $search);
                             
+                            echo $created;
+                            /*
                             if ($created){
                                 echo "Congratulation! Your account has been created successfully. ";
                             }
                             else {
                                 echo "Error! ";
                             }
+                            */
                         ?>                   
 
                         <div style="clear: both;">&nbsp;</div>
@@ -63,8 +65,8 @@
        
     <!-- /.container -->
     <!-- jQuery -->
-    <script src="../bootstrap/js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     </body>
 </html>

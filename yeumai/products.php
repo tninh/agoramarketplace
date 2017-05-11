@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,14 +84,14 @@
                     <!-- TODO: Better to create a php function to do all of the below -->
                     <!-- TODO 2: Formatting -->
                     <?php
-                        $json_data = file_get_contents('assets/data/hoang_data.dat'); 
-                        $array = json_decode(trim($json_data), TRUE);
-                        //$ch = curl_init();
-                        //curl_setopt($ch, CURLOPT_URL, 'http://hroboter.com/sendproductsinfo.php');
-                        //curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                        //$content = curl_exec($ch);
-                        //curl_close($ch);
-                        //$array = json_decode(trim($content), TRUE);
+                        //$json_data = file_get_contents('assets/data/hoang_data.dat'); 
+                        //$array = json_decode(trim($json_data), TRUE);
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, 'http://hroboter.com/sendproductsinfo.php');
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                        $content = curl_exec($ch);
+                        curl_close($ch);
+                        $array = json_decode(trim($content), TRUE);
                         //var_dump($array);
                         foreach ($array as $row) {
                             echo '<div class="col-sm-4 col-lg-4 col-md-4">';
@@ -126,9 +127,15 @@
 
                     
                     <?php
-                        $json_data = file_get_contents('assets/data/phong_data.dat');
+                        //$json_data = file_get_contents('assets/data/phong_data.dat');
                         
-                        $array = json_decode(trim($json_data), TRUE);
+                        //$array = json_decode(trim($json_data), TRUE);
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, 'http://match-all.com/auto_out.php');
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                        $content = curl_exec($ch);
+                        curl_close($ch);
+                        $array = json_decode(trim($content), TRUE);
                         foreach ($array as $row) {
                             echo '<div class="col-sm-4 col-lg-4 col-md-4">';
                             echo '<div class="thumbnail">';

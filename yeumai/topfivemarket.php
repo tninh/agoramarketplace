@@ -28,6 +28,9 @@
 
                       $count = 0;  
                       foreach ($data as $row) {
+                          if (count >= 5) {
+                            break;
+                          }
                           $count++;
                            print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
                              print " <div class='thumbnail'> \n";
