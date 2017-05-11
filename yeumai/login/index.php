@@ -39,6 +39,8 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <!-- Custom styles for this template -->
+
+    <link href="signin.css" rel="stylesheet">
     <link href="../login/signin.css" rel="stylesheet">
 
     <script type = "text/javascript">
@@ -83,26 +85,38 @@
 
     <div class="container">
 
-      <form id="loginform" action="index.php" method="post" class="form-signin">
+
+      <form id="loginform" action="index.php" method="post" class="form-signin">r
         <div class="text-center">
           <img src="../assets/img/logo/agora.png" width="130" height="130">
         </div>
         <h2 class="form-signin-heading">Please sign in</h2>
 
         <label for="inputEmail" class="sr-only">Email address</label>
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="PASSWORD" class="form-control" placeholder="Password" required>
+
         <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address">
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
+
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
+
+        <a class="btn btn-lg btn-primary btn-block" href="../signup">or Create An Account</a>
+      </form>
+
+
+
         <button class="btn btn-lg btn-primary btn-block" type="button" onclick="validate()">Login</button>
         <a class="btn btn-lg btn-primary btn-block" href="../signup/">or Create An Account</a>
         
-      </form>
       <div class="error"><span><?php echo $error ?></span></div>
+
     </div> <!-- /container -->
 
 
