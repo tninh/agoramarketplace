@@ -25,47 +25,7 @@
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--<img class="pull-left" src="assets/img/logo/agora.png">-->
-                <a class="navbar-brand" href="#">Agora Marketplace</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="main.php">Home</a>
-                    </li>
-                    <li>
-                        <a href="about.php">About</a>
-                    </li>
-                    <li>
-                        <a href="products.php">Products</a>
-                    </li>
-                    <li>
-                        <a href="news.php">News</a>
-                    </li>
-                    <li>
-                        <a href="contacts.php">Contacts</a>
-                    </li>
-                    <li>
-                        <a href="users/users_main.php">Users</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+    <?php include 'header_nav.inc.php'; ?>
 
     <!-- Page Content -->
     <div class="container">
@@ -76,13 +36,13 @@
                 <p class="lead">Cookies</p>
                 <div class="list-group">
                     <a href="lfive.php" class="list-group-item">Last five visited items</a>
-                    <a href="mfive.php" class="list-group-item">Five most visited items</a>
+                    <a href="topfivemarket.php" class="list-group-item">Five most famous items in Agora</a>
                 </div>
                 <p class="lead">Partners</p>
                 <div class="list-group">
                     <a href="http://hroboter.com/" class="list-group-item">HRoboter</a>
                     <a href="http://taipham.info/index.php" class="list-group-item">SoccerGearX</a>
-                    <a href="http://match-all.com/matchall/" class="list-group-item">Auto Car</a>
+                    <a href="http://match-all.com//" class="list-group-item">Auto Car</a>
                 </div>
             </div>
 
@@ -137,7 +97,7 @@
                             echo '<div class="thumbnail">';
                             echo '<img class="img-rounded mh-100"src="'.$row['image'].'" alt="">';
                             echo '<div class="caption">';
-                            echo '<h4><a href="http://hroboter.com/single_product_page.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
+                            echo '<h4><a href="http://hroboter.com/detail.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
                             echo '<p><h4>$'.$row['price'].'</h4></p>';
                             echo '<p>'.$row['description'].'</p>';
                             echo '</div>';
@@ -155,7 +115,7 @@
                             echo '<div class="thumbnail">';
                             echo '<img src="http://taipham.info/image/'.$row['image_uri'].'" alt="">';
                             echo '<div class="caption">';
-                            echo '<h4><a href="http://taipham.info/single_product_page.php?id='.$row['prod_id'].'">'.$row['prod_name'].'</a></h4>';
+                            echo '<h4><a href="http://taipham.info/detail.php?id='.$row['prod_id'].'">'.$row['prod_name'].'</a></h4>';
                             echo '<p><h4>$'.$row['prod_price'].'</h4></p>';
                             echo '<p>'.$row['desc'].'</p>';
                             echo '</div>';

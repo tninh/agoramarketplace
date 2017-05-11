@@ -9,10 +9,10 @@
         <title>Agora</title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="css/shop-homepage.css" rel="stylesheet">
+        <link href="../css/shop-homepage.css" rel="stylesheet">
 
          <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,24 +32,39 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://match-all.com/index.php">Agora</a>
+                <a class="navbar-brand" href="index.php">Agora</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#"></a>
+                        <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.php">About</a>
+                    </li>
+                    <li>
+                        <a href="products.php">Products</a>
+                    </li>
+                    <li>
+                        <a href="news.php">News</a>
+                    </li>
+                    <li>
+                        <a href="contacts.php">Contacts</a>
+                    </li>
+                    <li>
+                        <a href="#">Users</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="http://match-all.com/login.php">Log in</a>
+                        <a href="login/index.php">Log in</a>
                     </li>
                     <li>
-                        <a href="http://match-all.com/logout.php">Log out</a>
+                        <a href="#">Log out</a>
                     </li>
                     <li>
-                        <a href="http://match-all.com/register.php">Register</a>
+                        <a href="signup/index.php">Register</a>
                     </li>
                     
                 </ul>
