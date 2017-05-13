@@ -2,10 +2,11 @@
     session_start();
 
     if (count($_SESSION) != 0){
-        var_dump($_SESSION);
-    }
-    else var_dump($_SESSION);
 
+        //var_dump($_SESSION);
+    }
+    else {}//var_dump($_SESSION);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,54 +98,24 @@
 
         <div class="col-md-9">
 
-            <div class="row carousel-holder">
-
-                <div class="col-md-12">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="slide-image" src="http://match-all.com/matchall/photo/car1.jpg" alt="http://placehold.it/800x300">
-                            </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://taipham.info/image/adidas-toque-13-jersey.jpg" alt="http://placehold.it/800x300">
-                            </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://match-all.com/matchall/photo/car2.jpg" alt="http://placehold.it/800x300">
-                            </div>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-
 
 
             <div class="row">
                 <?php
                 //get the last 5 visited items ID.
-                $arr=array_reverse($_COOKIE);
+                $arr=$_COOKIE;
                 $keyArr= [];
                 $i=0;
                 foreach($arr as $key => $value){
                     if ($key == "PHPSESSID"){}
                     else {
-                        array_push($keyArr, $value);
-                        $i++;
-                        if ($i == 5) break;
+                        $keyArr[$key] = $value;
                     }
                 }
+                
+                arsort($keyArr);
+                $count = 0;
+                
                 foreach ($keyArr as $value){
                     $temp = explode("_", $value);
 
@@ -153,10 +124,11 @@
                         $link = "http://" . $temp[0] . ".com/companywebsite/getProduct.php?id=" . $temp[1];
                         $temp = file_get_contents($link);
                         $row = json_decode($temp, true);
-                        $temp= "http://knowasian.com/companywebsite/Tradition.php?id=" . $row["ID"];
-                        echo "<div style='float:left;margin:20px;'><label>" . $row["TITLE"] . "</label><br />";
-                        echo "<a href=" . $temp . ">" . "<img src=" . $row["PICTURE"] . " style='width:340px;height:228px;'>" . "</a></div>";
-                        $a="<a href=" . $temp . ">" . "<img src=" . $row["PICTURE"] . " style='width:340px;height:228px;'>" . "</a></div>";
+                        
+
+                        $temp= "http://knowasian.com/companywebsite/detail.php?id=" . $row["id"];
+                        echo "<div style='float:left;margin:20px;'><label>" . $row["title"] . "</label><br />";
+                        echo "<a href=" . $temp . ">" . "<img src=" . $row["image"] . " style='width:340px;height:228px;'>" . "</a></div>";
 
                     }
                 }
