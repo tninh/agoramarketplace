@@ -2,11 +2,11 @@
     session_start();
 
     if (count($_SESSION) != 0){
+
         //var_dump($_SESSION);
     }
     else {}//var_dump($_SESSION);
     
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,8 +98,6 @@
 
         <div class="col-md-9">
 
-            
-
 
 
             <div class="row">
@@ -117,12 +115,10 @@
                 
                 arsort($keyArr);
                 $count = 0;
-                foreach ($keyArr as $key => $value){
-                    if ($count >= 5)
-                        break;
-                	
+                
+                foreach ($keyArr as $value){
                     $temp = explode("_", $value);
-					
+
                     if($temp[0] == "knowasian"){
 
                         $link = "http://" . $temp[0] . ".com/companywebsite/getProduct.php?id=" . $temp[1];
@@ -133,7 +129,6 @@
                         $temp= "http://knowasian.com/companywebsite/detail.php?id=" . $row["id"];
                         echo "<div style='float:left;margin:20px;'><label>" . $row["title"] . "</label><br />";
                         echo "<a href=" . $temp . ">" . "<img src=" . $row["image"] . " style='width:340px;height:228px;'>" . "</a></div>";
-                    
 
                     }
                 }

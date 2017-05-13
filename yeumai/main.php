@@ -24,8 +24,10 @@
 </head>
 
 <body>
+
     <?php include 'header_nav.inc.php'; ?>
     
+
     <!-- Page Content -->
     <div class="container">
         <!-- Jumbotron Header -->
@@ -35,8 +37,7 @@
             </div>
             <h1>Welcom to Agora Marketplace</h1>
             <p>The ultimate marketplace for all people</p>
-            </p>
-        </header>
+           
         <hr>
 
 
@@ -58,8 +59,6 @@
                 </div>
             </div>
         </footer>
-
-    </div>
     <!-- /.container -->
 
     <!-- jQuery -->
