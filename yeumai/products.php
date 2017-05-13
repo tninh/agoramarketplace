@@ -38,7 +38,8 @@
                 <p class="lead">Cookies</p>
                 <div class="list-group">
                     <a href="lfive.php" class="list-group-item">Last five visited items</a>
-                    <a href="topfivemarket.php" class="list-group-item">Five most famous items in Agora</a>
+                    <a href="topfivemarket.php" class="list-group-item">Five most ratings items in Agora</a>
+                    <a href="topfivereview.php" class="list-group-item">Five most reviews items in Agora</a>
                 </div>
                 <p class="lead">Partners</p>
                 <div class="list-group">

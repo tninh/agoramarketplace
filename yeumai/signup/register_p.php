@@ -3,7 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+    <link href="../bootstrap/css/shop-homepage.css" rel="stylesheet">
     </head>
     <body>
         <!-- include header navigation -->
@@ -42,15 +45,12 @@
                                         $cellphone, $homephone, $address, $city, $state, $zip, 
                                         $userpass, $userrole, $search);
                             
-                            echo $created;
-                            /*
                             if ($created){
                                 echo "Congratulation! Your account has been created successfully. ";
                             }
                             else {
                                 echo "Error! ";
                             }
-                            */
                         ?>                   
 
                         <div style="clear: both;">&nbsp;</div>
@@ -65,8 +65,8 @@
        
     <!-- /.container -->
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../boostrap/js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>
