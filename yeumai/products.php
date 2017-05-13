@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php require_once('utils/config.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +42,8 @@
                 </div>
                 <p class="lead">Partners</p>
                 <div class="list-group">
+                    <a href="http://match-all.com//" class="list-group-item">4 You Inc</a>
+                    <a href="http://match-all.com//" class="list-group-item">Know Asian</a>
                     <a href="http://hroboter.com/" class="list-group-item">HRoboter</a>
                     <a href="http://taipham.info/index.php" class="list-group-item">SoccerGearX</a>
                     <a href="http://match-all.com//" class="list-group-item">Auto Car</a>
@@ -48,7 +51,7 @@
             </div>
 
             <div class="col-md-9">
-
+                <!--
                 <div class="row carousel-holder">
 
                     <div class="col-md-12">
@@ -60,7 +63,7 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://match-all.com/matchall/photo/car1.jpg" alt="http://placehold.it/800x300">
+                                    <img class="slide-image" src="http://match-all.com/photo/car1.jpg" alt="http://placehold.it/800x300">
                                 </div>
                                 <div class="item">
                                     <img class="slide-image" src="http://taipham.info/image/adidas-toque-13-jersey.jpg" alt="http://placehold.it/800x300">
@@ -79,76 +82,171 @@
                     </div>
 
                 </div>
-
+                -->
                 <div class="row">
                     <!-- TODO: Better to create a php function to do all of the below -->
                     <!-- TODO 2: Formatting -->
                     <?php
-                        //$json_data = file_get_contents('assets/data/hoang_data.dat'); 
-                        //$array = json_decode(trim($json_data), TRUE);
                         $ch = curl_init();
                         curl_setopt($ch, CURLOPT_URL, 'http://hroboter.com/sendproductsinfo.php');
                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                         $content = curl_exec($ch);
                         curl_close($ch);
-                        $array = json_decode(trim($content), TRUE);
+                        //$array = json_decode(trim($content), TRUE);
                         //var_dump($array);
-                        foreach ($array as $row) {
-                            echo '<div class="col-sm-4 col-lg-4 col-md-4">';
-                            echo '<div class="thumbnail">';
-                            echo '<img class="img-rounded mh-100"src="'.$row['image'].'" alt="">';
-                            echo '<div class="caption">';
-                            echo '<h4><a href="http://hroboter.com/detail.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
-                            echo '<p><h4>$'.$row['price'].'</h4></p>';
-                            echo '<p>'.$row['description'].'</p>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
+                        //foreach ($array as $row) {
+                        //    echo '<div class="col-sm-4 col-lg-4 col-md-4">';
+                        //    echo '<div class="thumbnail">';
+                        //    echo '<img class="img-rounded mh-100"src="'.$row['image'].'" alt="">';
+                        //    echo '<div class="caption">';
+                        //    echo '<h4><a href="http://hroboter.com/detail.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
+                        //    echo '<p><h4>$'.$row['price'].'</h4></p>';
+                        //    echo '<p>'.$row['description'].'</p>';
+                        //    echo '</div>';
+                        //    echo '</div>';
+                        //    echo '</div>';
+                        //}
                     ?>
 
-                    <?php
-                        $json_data = file_get_contents('assets/data/tai_data.dat'); 
-                        $array = json_decode(trim($json_data), TRUE);
-                    
-                        foreach ($array as $row) {
-                            echo '<div class="col-sm-4 col-lg-4 col-md-4">';
-                            echo '<div class="thumbnail">';
-                            echo '<img src="http://taipham.info/image/'.$row['image_uri'].'" alt="">';
-                            echo '<div class="caption">';
-                            echo '<h4><a href="http://taipham.info/detail.php?id='.$row['prod_id'].'">'.$row['prod_name'].'</a></h4>';
-                            echo '<p><h4>$'.$row['prod_price'].'</h4></p>';
-                            echo '<p>'.$row['desc'].'</p>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                    ?>
+                <h3>4 YOU INC</h3>
 
-                    
-                    <?php
-                        //$json_data = file_get_contents('assets/data/phong_data.dat');
-                        
-                        //$array = json_decode(trim($json_data), TRUE);
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, 'http://match-all.com/auto_out.php');
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                        $content = curl_exec($ch);
-                        curl_close($ch);
-                        $array = json_decode(trim($content), TRUE);
-                        foreach ($array as $row) {
-                            echo '<div class="col-sm-4 col-lg-4 col-md-4">';
-                            echo '<div class="thumbnail">';
-                            echo '<img src="'.$row['image'].'" alt="">';
-                            echo '<div class="caption">';
-                            echo '<h4><a href="http://match-all.com/detail.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
-                            echo '<p><h4>$'.$row['price'].'</h4></p>';
-                            echo '<p>'.$row['description'].'</p>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                    ?> 
+                <div class="row">
+
+                   <?php 
+                                             
+                      $data = getMarketProduct('http://4youinc.co/outproduct.php');
+                      foreach ($data as $row) {
+                           print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
+                             print " <div class='thumbnail'> \n";
+                                print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
+                                print " <div class='caption'> \n";
+                                   print " <h5><a href='http://4youinc.co/detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
+                                    print " <h5>$ " . $row["price"] . "</h5> \n";
+                                   print " <h5>" . $row["location"] . "</h5> \n";
+                                   print " <div class='ratings'> \n";
+                                   $review = $row["count"];
+                            if ($review <= 0) {
+                                $review = 0;
+                            }
+                            print " <p class='pull-right'>" . $row["count"] ." reviews</p>";
+                            print "<p>";
+                            $rating = $row["avgRating"];
+                            $round_rating = round($rating);
+                            drawStars($round_rating);
+                            print " " . $round_rating . " stars";
+                                   print "</p>";    
+                                   print " </div> \n";                          
+                                print " </div> \n";
+                             print " </div> \n";
+                          print " </div> \n";
+
+                      }    
+                   ?>
+                </div>
+
+                <h3>SoccerGearX</h3>
+
+                <div class="row">
+
+                    <?php 
+                                                 
+                        $data = getMarketProduct('http://taipham.info/outproduct.php');
+                        foreach ($data as $row) {
+                            print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
+                            print " <div class='thumbnail'> \n";
+                            print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
+                            print " <div class='caption'> \n";
+                            print " <h5><a href='http://taipham.info/detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
+                            print " <h5>$ " . $row["price"] . "</h5> \n";
+                            print " <h5>" . $row["location"] . "</h5> \n";                          
+                            print " <div class='ratings'> \n";
+                            $review = $row["count"];
+                            if ($review <= 0) {
+                                $review = 0;
+                            }
+                            print " <p class='pull-right'>" . $row["count"] ." reviews</p>";
+                            print "<p>";
+                            $rating = $row["avgRating"];
+                            $round_rating = round($rating);
+                            drawStars($round_rating);
+                            print " " . $round_rating . " stars";
+                            print "</p>";    
+                            print " </div> \n";                          
+                            print " </div> \n";
+                            print " </div> \n";
+                            print " </div> \n";
+                        }    
+                    ?>
+                </div>    
+                
+                <h3>Auto Car</h3>
+
+                <div class="row">
+
+                    <?php 
+                                                 
+                        $data = getMarketProduct('http://match-all.com/auto_out.php');
+                        foreach ($data as $row) {
+                            print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
+                            print " <div class='thumbnail'> \n";
+                            print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
+                            print " <div class='caption'> \n";
+                            print " <h5><a href='http://match-all.com/detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
+                            print " <h5>$ " . $row["price"] . "</h5> \n";
+                            print " <h5>" . $row["location"] . "</h5> \n";                          
+                            print " <div class='ratings'> \n";
+                            $review = $row["count"];
+                            if ($review <= 0) {
+                                $review = 0;
+                            }
+                            print " <p class='pull-right'>" . $row["count"] ." reviews</p>";
+                            print "<p>";
+                            $rating = $row["avgRating"];
+                            $round_rating = round($rating);
+                            drawStars($round_rating);
+                            print " " . $round_rating . " stars";
+                            print "</p>";    
+                            print " </div> \n";                          
+                            print " </div> \n";
+                            print " </div> \n";
+                            print " </div> \n";
+                        }    
+                    ?>
+                </div>
+
+                <h3>Know Asian</h3>
+
+                <div class="row">
+
+                    <?php 
+                                                 
+                        $data = getMarketProduct('http://knowasian.com/companywebsite/productout.php');
+                        foreach ($data as $row) {
+                            print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
+                            print " <div class='thumbnail'> \n";
+                            print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
+                            print " <div class='caption'> \n";
+                            print " <h5><a href='http://knowasian.com/companywebsite/detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
+                            print " <h5>$ " . $row["price"] . "</h5> \n";
+                            print " <h5>" . $row["location"] . "</h5> \n";                          
+                            print " <div class='ratings'> \n";
+                            $review = $row["count"];
+                            if ($review <= 0) {
+                                $review = 0;
+                            }
+                            print " <p class='pull-right'>" . $row["count"] ." reviews</p>";
+                            print "<p>";
+                            $rating = $row["avgRating"];
+                            $round_rating = round($rating);
+                            drawStars($round_rating);
+                            print " " . $round_rating . " stars";
+                            print "</p>";    
+                            print " </div> \n";                          
+                            print " </div> \n";
+                            print " </div> \n";
+                            print " </div> \n";
+                        }    
+                    ?>
                 </div>
 
             </div>
