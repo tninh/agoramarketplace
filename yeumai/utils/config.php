@@ -220,6 +220,17 @@ function getMarketProduct($link) {
       // Close file
       return $array = json_decode(trim($content), TRUE);
 }
+
+function sortArrayByRating($array_in) {
+    $rating = array();
+    foreach ($array_in as $key => $row)
+    {
+        $rating[$key] = $row["avgRating"];;
+    }
+    array_multisort($rating, SORT_DESC, $array_in);
+    return $array_in;
+}
+
 function createNewUser($useremail, $userfirst, $userlast, $usergender,
     $cellphone, $homephone, $address, $city, $state, $zip,
      $userpass, $userrole, $search){
