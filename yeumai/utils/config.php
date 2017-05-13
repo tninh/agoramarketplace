@@ -225,9 +225,23 @@ function sortArrayByRating($array_in) {
     $rating = array();
     foreach ($array_in as $key => $row)
     {
-        $rating[$key] = $row["avgRating"];;
+        $rating[$key] = $row["avgRating"];
     }
     array_multisort($rating, SORT_DESC, $array_in);
+    return $array_in;
+}
+
+function sortArrayByReview($array_in) {
+    $count = array();
+    foreach ($array_in as $key => $row)
+    {
+        $review = $row["count"];
+        if ($review <= 0) {
+            $review = 0;
+        }
+        $count[$key] = $review;
+    }
+    array_multisort($count, SORT_DESC, $array_in);
     return $array_in;
 }
 
@@ -249,9 +263,7 @@ function createNewUser($useremail, $userfirst, $userlast, $usergender,
             if (count($result) > 0)
             {
                 alert("This email already exists.");
-                echo "This email already exists.";
-                //return False;
-                return "This email already exists.";
+                return False;
             }
             else
             {
@@ -273,8 +285,7 @@ function createNewUser($useremail, $userfirst, $userlast, $usergender,
                         ':user_pass' => $userpass,
                         ':search' => $search);
                 $ps = $conn->prepare($sql);
-                $ps->execute($params);
-                return "Lala";
+                return($ps->execute($params));
             }
         }
     }
