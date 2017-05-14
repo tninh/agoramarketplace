@@ -113,12 +113,11 @@
                     }
                 }
                 
+
                 arsort($keyArr);
                 $count = 0;
-                
-                foreach ($keyArr as $value){
-                    $temp = explode("_", $value);
-
+                foreach ($keyArr as $key => $value){
+                    $temp = explode("_", $key);
                     if($temp[0] == "knowasian"){
 
                         $link = "http://" . $temp[0] . ".com/companywebsite/getProduct.php?id=" . $temp[1];
@@ -130,7 +129,20 @@
                         echo "<div style='float:left;margin:20px;'><label>" . $row["title"] . "</label><br />";
                         echo "<a href=" . $temp . ">" . "<img src=" . $row["image"] . " style='width:340px;height:228px;'>" . "</a></div>";
 
-                    }
+                    }  
+                    else if($temp[0] == "taipham"){
+
+                        $link = "http://" . $temp[0] . ".info/getProduct.php?id=" . $temp[1];
+                        $temp = file_get_contents($link);
+                        $row = json_decode($temp, true);
+                        $row = $row[0];
+
+                        $temp= "http://taipham.info/detail.php?id=" . $row["id"];
+                        echo "<div style='float:left;margin:20px;'><label>" . $row["title"] . "</label><br />";
+                        echo "<a href=" . $temp . ">" . "<img src=" . $row["image"] . " style='width:340px;height:228px;'>" . "</a></div>";
+
+                    } 
+
                 }
                 ?>
 
