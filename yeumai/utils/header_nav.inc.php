@@ -1,3 +1,4 @@
+
   <!-- Navigation -->
   <header>
     <meta charset="utf-8">
@@ -61,10 +62,13 @@
                         <a href="login/index.php">Log in</a>
                     </li>
                     <li>
-                        <a href="#">Log out</a>
+                        <a href="logout/index.php">Log out</a>
                     </li>
                     <li>
                         <a href="signup/index.php">Register</a>
+                    </li>
+                    <li>
+                        <a href="#"><?php print $_SESSION[$g_login_session_key]?></a>
                     </li>
                     
                 </ul>

@@ -26,8 +26,7 @@
 </head>
 
 <body>
-
-    <?php include 'header_nav.inc.php'; ?>
+    <?php include 'utils/header_nav.inc.php'; ?>
 
     <!-- Page Content -->
     <div class="container">
@@ -45,7 +44,7 @@
                 <div class="list-group">
                     <a href="http://match-all.com//" class="list-group-item">4 You Inc</a>
                     <a href="http://match-all.com//" class="list-group-item">Know Asian</a>
-                    <a href="http://hroboter.com/" class="list-group-item">HRoboter</a>
+                    <a href="http://www.roobra.com/" class="list-group-item">HRoboter</a>
                     <a href="http://taipham.info/index.php" class="list-group-item">SoccerGearX</a>
                     <a href="http://match-all.com//" class="list-group-item">Auto Car</a>
                 </div>
@@ -86,28 +85,42 @@
                 -->
                 <div class="row">
                     <!-- TODO: Better to create a php function to do all of the below -->
-                    <!-- TODO 2: Formatting -->
-                    <?php
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, 'http://hroboter.com/sendproductsinfo.php');
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                        $content = curl_exec($ch);
-                        curl_close($ch);
-                        //$array = json_decode(trim($content), TRUE);
-                        //var_dump($array);
-                        //foreach ($array as $row) {
-                        //    echo '<div class="col-sm-4 col-lg-4 col-md-4">';
-                        //    echo '<div class="thumbnail">';
-                        //    echo '<img class="img-rounded mh-100"src="'.$row['image'].'" alt="">';
-                        //    echo '<div class="caption">';
-                        //    echo '<h4><a href="http://hroboter.com/detail.php?id='.$row['id'].'">'.$row['title'].'</a></h4>';
-                        //    echo '<p><h4>$'.$row['price'].'</h4></p>';
-                        //    echo '<p>'.$row['description'].'</p>';
-                        //    echo '</div>';
-                        //    echo '</div>';
-                        //    echo '</div>';
-                        //}
-                    ?>
+
+                <h3>ROOBRA</h3>
+
+                <div class="row">
+
+                   <?php 
+                                             
+                      $data = getMarketProduct('www.roobra.com/sendproductsinfo.php');
+                      foreach ($data as $row) {
+                           print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
+                             print " <div class='thumbnail'> \n";
+                                print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
+                                print " <div class='caption'> \n";
+                                   print " <h5><a href='http://www.roobra.com/detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
+                                    print " <h5>$ " . $row["price"] . "</h5> \n";
+                                   print " <h5>" . $row["location"] . "</h5> \n";
+                                   print " <div class='ratings'> \n";
+                                   $review = $row["count"];
+                            if ($review <= 0) {
+                                $review = 0;
+                            }
+                            print " <p class='pull-right'>" . $row["count"] ." reviews</p>";
+                            print "<p>";
+                            $rating = $row["avgRating"];
+                            $round_rating = round($rating);
+                            drawStars($round_rating);
+                            print " " . $round_rating . " stars";
+                                   print "</p>";    
+                                   print " </div> \n";                          
+                                print " </div> \n";
+                             print " </div> \n";
+                          print " </div> \n";
+
+                      }    
+                   ?>
+                </div>
 
                 <h3>4 YOU INC</h3>
 
@@ -186,7 +199,7 @@
 
                     <?php 
                                                  
-                        $data = getMarketProduct('http://match-all.com/auto_out.php');
+                        $data = getMarketProduct('http://match-all.com/productout.php');
                         foreach ($data as $row) {
                             print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
                             print " <div class='thumbnail'> \n";
