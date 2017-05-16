@@ -42,9 +42,9 @@
                 </div>
                 <p class="lead">Partners</p>
                 <div class="list-group">
-                    <a href="http://match-all.com//" class="list-group-item">4 You Inc</a>
-                    <a href="http://match-all.com//" class="list-group-item">Know Asian</a>
-                    <a href="http://www.roobra.com/" class="list-group-item">HRoboter</a>
+                    <a href="http://4youinc.co/" class="list-group-item">4 You Inc</a>
+                    <a href="http://nowasian.com/companywebsite/" class="list-group-item">Know Asian</a>
+                    <a href="http://www.roobra.com/" class="list-group-item">Roobra</a>
                     <a href="http://taipham.info/index.php" class="list-group-item">SoccerGearX</a>
                     <a href="http://match-all.com//" class="list-group-item">Auto Car</a>
                 </div>
@@ -92,13 +92,13 @@
 
                    <?php 
                                              
-                      $data = getMarketProduct('www.roobra.com/sendproductsinfo.php');
+                      $data = getMarketProduct('http://roobra.com/sendproductsinfo.php');
                       foreach ($data as $row) {
                            print " <div class='col-sm-4 col-lg-4 col-md-4'> \n";
                              print " <div class='thumbnail'> \n";
                                 print " <img src='" . $row["image"] . "' alt='' style='width:256px;height:200px;'> \n";
                                 print " <div class='caption'> \n";
-                                   print " <h5><a href='http://www.roobra.com/detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
+                                   print " <h5><a href='http://roobra.com/detail.php?id=" . $row["id"] ."'>" . $row["title"] . "</a></h5> \n";
                                     print " <h5>$ " . $row["price"] . "</h5> \n";
                                    print " <h5>" . $row["location"] . "</h5> \n";
                                    print " <div class='ratings'> \n";
