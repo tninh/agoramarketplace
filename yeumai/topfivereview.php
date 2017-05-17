@@ -25,7 +25,8 @@
                       $data2 = getMarketProduct('http://taipham.info/topfiveout.php');
                       $data3 = getMarketProduct('http://4youinc.co/topfiveout.php');
                       $data4 = getMarketProduct('http://knowasian.com/companywebsite/topfiveout.php');
-                      $data = array_merge($data1, $data2, $data3, $data4);
+                      $data5 = getMarketProduct('http://www.roobra.com/topfiveout.php');
+                      $data = array_merge($data1, $data2, $data3, $data4, $data5);
 
                       $data = sortArrayByReview($data);
                       $count = 0;  

@@ -141,7 +141,40 @@
                         echo "<div style='float:left;margin:20px;'><label>" . $row["title"] . "</label><br />";
                         echo "<a href=" . $temp . ">" . "<img src=" . $row["image"] . " style='width:340px;height:228px;'>" . "</a></div>";
 
-                    } 
+                    } else if($temp[0] == "match-all"){
+
+                        $link = "http://" . $temp[0] . ".com/getProduct.php?id=" . $temp[1];
+                        $temp = file_get_contents($link);
+                        $row = json_decode($temp, true);
+                        //$row = $row[0];
+
+                        $temp= "http://match-all.com/detail.php?id=" . $row["id"];
+                        echo "<div style='float:left;margin:20px;'><label>" . $row["title"] . "</label><br />";
+                        echo "<a href=" . $temp . ">" . "<img src=" . $row["image"] . " style='width:340px;height:228px;'>" . "</a></div>";
+
+                    } else if($temp[0] == "roobra"){
+
+                        $link = "http://" . $temp[0] . ".com/getProduct.php?id=" . $temp[1];
+                        $temp = file_get_contents($link);
+                        $row = json_decode($temp, true);
+                        //$row = $row[0];
+
+                        $temp= "http://roobra.com/detail.php?id=" . $row["id"];
+                        echo "<div style='float:left;margin:20px;'><label>" . $row["title"] . "</label><br />";
+                        echo "<a href=" . $temp . ">" . "<img src=" . $row["image"] . " style='width:340px;height:228px;'>" . "</a></div>";
+
+                    } else if($temp[0] == "4youinc"){
+
+                        $link = "http://" . $temp[0] . ".co/getProduct.php?id=" . $temp[1];
+                        $temp = file_get_contents($link);
+                        $row = json_decode($temp, true);
+                        //$row = $row[0];
+
+                        $temp= "http://4youinc.co/detail.php?id=" . $row["id"];
+                        echo "<div style='float:left;margin:20px;'><label>" . $row["title"] . "</label><br />";
+                        echo "<a href=" . $temp . ">" . "<img src=" . $row["image"] . " style='width:340px;height:228px;'>" . "</a></div>";
+
+                    }
 
                 }
                 ?>

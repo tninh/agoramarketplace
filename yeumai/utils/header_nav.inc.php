@@ -1,3 +1,4 @@
+
   <!-- Navigation -->
   <header>
     <meta charset="utf-8">
@@ -13,7 +14,11 @@
 
         <!-- Custom CSS -->
         <link href="../css/shop-homepage.css" rel="stylesheet">
+        <!-- Bootstrap Core CSS -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- Custom CSS -->
+        <link href="bootstrap/css/shop-homepage.css" rel="stylesheet">
          <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -61,10 +66,13 @@
                         <a href="login/index.php">Log in</a>
                     </li>
                     <li>
-                        <a href="#">Log out</a>
+                        <a href="logout/index.php">Log out</a>
                     </li>
                     <li>
                         <a href="signup/index.php">Register</a>
+                    </li>
+                    <li>
+                        <a href="#"><?php print $_SESSION[$g_login_session_key]?></a>
                     </li>
                     
                 </ul>

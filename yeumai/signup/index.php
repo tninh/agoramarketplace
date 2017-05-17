@@ -20,10 +20,19 @@
             
             
             $_SESSION[$g_login_session_key] = $useremail;
-
-            if(!empty($returnUrl))
-                Redirect(urldecode($returnUrl));
-            else
+            $link = "http://knowasian.com/companywebsite/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            $link = "http://match-all.com/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            $link = "http://roobra.com/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            $link = "http://taipham.info/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            $link = "http://4youinc.co/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            //if(!empty($returnUrl))
+            //    Redirect(urldecode($returnUrl));
+            //else
                 Redirect("../product.php");
         }
     }

@@ -17,9 +17,19 @@
         {
             $returnUrl = filter_input(INPUT_POST, "url");
             $_SESSION[$g_login_session_key] = $useremail;
-            if(!empty($returnUrl))
-                Redirect(urldecode($returnUrl));
-            else
+            $link = "http://knowasian.com/companywebsite/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            $link = "http://match-all.com/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            $link = "http://roobra.com/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            $link = "http://taipham.info/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            $link = "http://4youinc.co/setSession.php?username=" . $_SESSION[$g_login_session_key];
+            echo "<img src=" . $link . " style='display:none;'>"; //do this everytime 
+            //if(!empty($returnUrl))
+            //    Redirect(urldecode($returnUrl));
+            //else
                 Redirect("../products.php");
         }
     }
@@ -93,10 +103,6 @@
         <h2 class="form-signin-heading">Please sign in</h2>
 
         <label for="inputEmail" class="sr-only">Email address</label>
-
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="PASSWORD" class="form-control" placeholder="Password" required>
-
         <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address">
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
@@ -107,13 +113,10 @@
           </label>
         </div>
 
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="validate()">Login</button>
         <a class="btn btn-lg btn-primary btn-block" href="../signup">or Create An Account</a>
       </form>
 
-
-
-        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="validate()">Login</button>
-        <a class="btn btn-lg btn-primary btn-block" href="../signup/">or Create An Account</a>
         
       <div class="error"><span><?php echo $error ?></span></div>
 
