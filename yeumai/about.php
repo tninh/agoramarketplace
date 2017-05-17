@@ -25,14 +25,14 @@
 
 <body>
 
-    <?php include 'header_nav.inc.php'; ?>
+    <?php include 'utils/header_nav.inc.php'; ?>
     
 
     <!-- Page Content -->
     <div class="container">
 
         <!-- Page Features -->
-        <div class="row text-center">
+        <div class="row">
             <p>About the team</p>
 
 

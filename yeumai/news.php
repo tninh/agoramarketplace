@@ -25,17 +25,17 @@
 
 <body>
 
-    <?php include 'header_nav.inc.php'; ?>
+    <?php include 'utils/header_nav.inc.php'; ?>
     
 
     <!-- Page Content -->
     <div class="container">
 
         <!-- Page Features -->
-        <div class="row text-center">
-            <p>News</p>
-
-
+        <div class="row">
+            <h3>News</h3>
+            <p><a href="http://www.theagoramarket.com/">Agora Markeplace rank #1 in google trend</a></p>
+            <p><a href="http://www.theagoramarket.com/">Agora Markeplace reached 50 millions users</a></p>
         </div>
         <!-- /.row -->
 
